@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Loans | FinTrust</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #18332e;
+        --muted: #687872;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.7;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        width: 91%;
+        max-width: 1200px;
+        margin: auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: white;
+        box-shadow: 0 2px 12px #0001;
+      }
+      .navbar {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        gap: 17px;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .nav-links a:hover {
+        color: var(--mint);
+      }
+      .btn {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        padding: 12px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .menu-btn {
+        display: none;
+        border: 0;
+        background: none;
+        font-size: 25px;
+      }
+      .hero {
+        background:
+          linear-gradient(90deg, #043c34f5, #043c34b3),
+          url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=85")
+            center/cover;
+        color: white;
+        padding: 85px 0;
+      }
+      .hero-content {
+        max-width: 720px;
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #d8a37e;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      h1 {
+        font-size: clamp(37px, 5vw, 60px);
+        line-height: 1.15;
+      }
+      .hero p {
+        max-width: 600px;
+        color: #d9e6e0;
+        margin: 20px 0 25px;
+        font-size: 14px;
+      }
+      .hero .btn,
+      .cta .btn {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .breadcrumb {
+        font-size: 12px;
+        color: #d9e6e0;
+        margin-top: 22px;
+      }
+      section.content {
+        padding: 70px 0;
+      }
+      .heading {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+      .heading h2,
+      h2 {
+        font-size: clamp(27px, 4vw, 39px);
+        line-height: 1.25;
+      }
+      .heading p,
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .photo {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      ul.checks {
+        list-style: none;
+        margin: 18px 0;
+      }
+      .checks li {
+        margin: 10px 0;
+        font-size: 13px;
+      }
+      .checks li:before {
+        content: "✓";
+        color: #07866a;
+        font-weight: 800;
+        margin-right: 10px;
+      }
+      .cream {
+        background: var(--cream);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .card {
+        background: white;
+        padding: 27px;
+        border: 1px solid #e3e9e2;
+        border-radius: 5px;
+      }
+      .card .symbol {
+        font-size: 28px;
+        color: #0a9674;
+      }
+      .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .faq {
+        max-width: 850px;
+        margin: auto;
+      }
+      details {
+        background: white;
+        border-bottom: 1px solid #e2e7e0;
+        padding: 18px;
+        margin-bottom: 8px;
+      }
+      summary {
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      details p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 12px;
+      }
+      .cta {
+        background: var(--green);
+        color: white;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+      }
+      .cta p {
+        color: #d4e3dc;
+        font-size: 13px;
+        margin-top: 10px;
+      }
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 45px 0 18px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 25px;
+        padding-bottom: 28px;
+      }
+      footer h3 {
+        font-size: 14px;
+        margin-bottom: 13px;
+      }
+      footer p,
+      footer a {
+        display: block;
+        color: #c3d5cd;
+        font-size: 11px;
+        margin: 8px 0;
+      }
+      footer a:hover {
+        color: var(--mint);
+      }
+      .copyright {
+        border-top: 1px solid #ffffff25;
+        padding-top: 18px;
+        color: #c3d5cd;
+        font-size: 11px;
+      }
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 9px;
+        }
+        .nav-links a {
+          font-size: 10px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .navbar {
+          min-height: 68px;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 15px 5%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .nav-links.show {
+          display: flex;
+        }
+        .nav-links a {
+          font-size: 13px;
+          padding: 9px 0;
+          border-bottom: 1px solid #eee;
+        }
+        .navbar > .btn {
+          display: none;
+        }
+        .hero {
+          padding: 60px 0;
+        }
+        section.content {
+          padding: 48px 0;
+        }
+        .grid,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          height: 280px;
+        }
+        .cta {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 28px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 400px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container navbar">
+        <a class="logo" href="index.html">⌂ FinTrust</a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a class="btn" href="apply-now.html">Get Started →</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">FinTrust Home Loans</div>
+        <h1>Find Your Way<br />to a Dream Home</h1>
+        <p>
+          Explore home financing for purchasing, constructing or renovating a
+          property. Understand common loan terms, repayment options and
+          documents before speaking with a lender.
+        </p>
+        <a href="apply-now.html" class="btn">Explore Application →</a>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="services.html">Services</a> /
+          Home Loans
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container grid">
+        <div>
+          <div class="eyebrow">Your Home Journey</div>
+          <h2>A Home Loan That Fits Your Plans</h2>
+          <p class="muted">
+            Buying a home is an important financial decision. Start by
+            understanding the property cost, your contribution, potential
+            interest rate and repayment period.
+          </p>
+          <ul class="checks">
+            <li>Explore home purchase financing</li>
+            <li>Learn about construction and renovation loans</li>
+            <li>Estimate monthly EMI repayments</li>
+            <li>Understand eligibility and lender requirements</li>
+          </ul>
+          <a class="btn" href="loan-calculator.html"
+            >Calculate Estimated EMI →</a
+          >
+        </div>
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+          alt="Modern home with beautiful architecture"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="content cream">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Explore Home Financing</div>
+          <h2>Home Loan Options</h2>
+          <p>
+            Explore common purposes for which borrowers may seek home financing.
+          </p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="symbol">⌂</div>
+            <h3>Home Purchase</h3>
+            <p>
+              Learn about financing a new or resale residential property and the
+              costs to consider before purchasing.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">⌂</div>
+            <h3>Home Construction</h3>
+            <p>
+              Understand financing considerations when planning to construct a
+              home on eligible land.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">✧</div>
+            <h3>Home Renovation</h3>
+            <p>
+              Explore possible financing for eligible repairs, upgrades and home
+              improvement projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container grid">
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=85"
+          alt="Financial documents prepared on a desk"
+          loading="lazy"
+        />
+        <div>
+          <div class="eyebrow">Get Prepared</div>
+          <h2>Documents You May Need</h2>
+          <p class="muted">
+            Requirements differ by lender, employment type, property and
+            applicant profile. Commonly requested documents may include:
+          </p>
+          <ul class="checks">
+            <li>Identity and address proof</li>
+            <li>Salary slips or income proof</li>
+            <li>Recent bank statements</li>
+            <li>Income tax returns, where applicable</li>
+            <li>Property-related documents</li>
+          </ul>
+          <p class="muted">
+            Confirm the final checklist directly with your chosen lender.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content cream">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Understand the Basics</div>
+          <h2>What Can Affect Eligibility?</h2>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="symbol">₹</div>
+            <h3>Income</h3>
+            <p>
+              Your income and existing financial commitments can influence the
+              amount a lender may consider.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">◷</div>
+            <h3>Repayment Tenure</h3>
+            <p>
+              A longer tenure may reduce the monthly EMI but can increase the
+              total interest paid.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">✓</div>
+            <h3>Credit Profile</h3>
+            <p>
+              Lenders may review your credit history, repayment record and other
+              eligibility criteria.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Frequently Asked Questions</div>
+          <h2>Home Loan FAQs</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What is a home loan?</summary>
+            <p>
+              A home loan is financing provided by a lender for an eligible
+              housing purpose. The borrower repays it according to the agreed
+              terms.
+            </p>
+          </details>
+          <details>
+            <summary>How can I estimate my home loan EMI?</summary>
+            <p>
+              Use the FinTrust EMI calculator and enter the loan amount, annual
+              interest rate and tenure. The result is an estimate, not a lender
+              offer.
+            </p>
+          </details>
+          <details>
+            <summary>Which documents are needed for a home loan?</summary>
+            <p>
+              Identity, address, income, bank and property documents are
+              commonly requested. The exact list depends on the lender and
+              application.
+            </p>
+          </details>
+          <details>
+            <summary>Does FinTrust guarantee loan approval?</summary>
+            <p>
+              No. This is a frontend demonstration website. Eligibility,
+              interest rates and approvals must be confirmed by an authorised
+              lender.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="content cream">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="eyebrow">Plan Your Next Step</div>
+            <h2>Ready to Explore Your Home Loan?</h2>
+            <p>
+              Estimate repayments or review the general application information.
+            </p>
+          </div>
+          <a class="btn" href="apply-now.html">Get Started →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html" style="color: white"
+              >⌂ FinTrust</a
+            >
+            <p>
+              Finance and loan information for exploring options and planning
+              repayments.
+            </p>
+          </div>
+          <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a><a href="about.html">About Us</a
+            ><a href="services.html">Services</a
+            ><a href="how-it-works.html">How It Works</a
+            ><a href="blog.html">Blog</a>
+          </div>
+          <div>
+            <h3>Loan Services</h3>
+            <a href="home-loans.html">Home Loans</a
+            ><a href="personal-loans.html">Personal Loans</a
+            ><a href="business-loans.html">Business Loans</a
+            ><a href="loan-calculator.html">EMI Calculator</a>
+          </div>
+          <div>
+            <h3>Contact & Legal</h3>
+            <a href="contact.html">Contact Us</a
+            ><a href="apply-now.html">Get Started</a
+            ><a href="privacy-policy.html">Privacy Policy</a
+            ><a href="terms.html">Terms & Conditions</a>
+          </div>
+        </div>
+        <div class="copyright">
+          © <span id="year"></span> FinTrust. Frontend demo only. Loan approval
+          is not guaranteed.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+      menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
+        menuBtn.textContent = navLinks.classList.contains("show") ? "✕" : "☰";
+      });
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("show");
+          menuBtn.textContent = "☰";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Loans | FinTrust</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #18332e;
+        --muted: #687872;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.7;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        width: 91%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: white;
+        box-shadow: 0 2px 12px #0001;
+      }
+      .navbar {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #0a9473;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        padding: 12px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .menu-btn {
+        display: none;
+        border: 0;
+        background: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .hero {
+        background:
+          linear-gradient(90deg, #043c34f5, #043c34b5),
+          url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85")
+            center/cover no-repeat;
+        color: white;
+        padding: 85px 0;
+      }
+      .hero-content {
+        max-width: 740px;
+      }
+      .eyebrow {
+        color: #d8a37e;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      h1 {
+        font-size: clamp(36px, 5vw, 59px);
+        line-height: 1.15;
+      }
+      .hero h1 span {
+        color: #69e4bd;
+      }
+      .hero p {
+        max-width: 610px;
+        color: #d9e6e0;
+        margin: 20px 0 25px;
+        font-size: 14px;
+      }
+      .hero .btn,
+      .cta .btn {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .breadcrumb {
+        font-size: 12px;
+        color: #d9e6e0;
+        margin-top: 22px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+      .heading {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+      .heading h2,
+      h2 {
+        font-size: clamp(27px, 4vw, 39px);
+        line-height: 1.25;
+      }
+      .heading p,
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .photo {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .checks {
+        list-style: none;
+        margin: 18px 0;
+      }
+      .checks li {
+        margin: 10px 0;
+        font-size: 13px;
+      }
+      .checks li:before {
+        content: "✓";
+        color: #07866a;
+        font-weight: 800;
+        margin-right: 10px;
+      }
+      .cream {
+        background: var(--cream);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .card {
+        background: white;
+        padding: 27px;
+        border: 1px solid #e3e9e2;
+        border-radius: 5px;
+        transition: 0.25s;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px #073f3712;
+      }
+      .symbol {
+        font-size: 30px;
+        color: #0a9674;
+      }
+      .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .faq {
+        max-width: 850px;
+        margin: auto;
+      }
+      details {
+        background: white;
+        border-bottom: 1px solid #e2e7e0;
+        padding: 18px;
+        margin-bottom: 8px;
+      }
+      summary {
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      details p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 12px;
+      }
+      .cta {
+        background: var(--green);
+        color: white;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+      }
+      .cta p {
+        color: #d4e3dc;
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 45px 0 18px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 25px;
+        padding-bottom: 28px;
+      }
+      footer h3 {
+        font-size: 14px;
+        margin-bottom: 13px;
+      }
+      footer p,
+      footer a {
+        display: block;
+        color: #c3d5cd;
+        font-size: 11px;
+        margin: 8px 0;
+      }
+      footer a:hover {
+        color: var(--mint);
+      }
+      .copyright {
+        border-top: 1px solid #ffffff25;
+        padding-top: 18px;
+        color: #c3d5cd;
+        font-size: 11px;
+      }
+
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 8px;
+        }
+        .nav-links a {
+          font-size: 10px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .navbar {
+          min-height: 68px;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 15px 5%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .nav-links.show {
+          display: flex;
+        }
+        .nav-links a {
+          font-size: 13px;
+          padding: 9px 0;
+          border-bottom: 1px solid #eee;
+        }
+        .navbar > .btn {
+          display: none;
+        }
+        .hero {
+          padding: 60px 0;
+        }
+        section {
+          padding: 48px 0;
+        }
+        .grid,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          height: 280px;
+        }
+        .cta {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 28px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 400px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container navbar">
+        <a class="logo" href="index.html">⌂ FinTrust</a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="btn" href="apply-now.html">Get Started →</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">FinTrust Business Finance</div>
+        <h1>Funding Ideas.<br /><span>Growing Businesses.</span></h1>
+        <p>
+          Explore business financing concepts for working capital, equipment
+          purchases and expansion. Understand the costs and eligibility
+          requirements before approaching a lender.
+        </p>
+        <a href="apply-now.html" class="btn">Explore Your Options →</a>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="services.html">Services</a> /
+          Business Loans
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <div>
+          <div class="eyebrow">Finance Your Next Step</div>
+          <h2>Support Your Business Goals</h2>
+          <p class="muted">
+            Businesses may explore financing to manage day-to-day expenses,
+            purchase equipment or support planned growth. The right option
+            depends on cash flow, repayment capacity and lender criteria.
+          </p>
+
+          <ul class="checks">
+            <li>Understand different business financing options</li>
+            <li>Plan working capital requirements</li>
+            <li>Estimate repayments and borrowing costs</li>
+            <li>Prepare business and financial records</li>
+          </ul>
+
+          <a href="loan-calculator.html" class="btn">Estimate Monthly EMI →</a>
+        </div>
+
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
+          alt="Modern business workspace"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Our Financing Categories</div>
+          <h2>Explore Business Loan Options</h2>
+          <p>
+            Common business funding purposes to discuss with a suitable lender.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="symbol">₹</div>
+            <h3>Working Capital</h3>
+            <p>
+              Explore ways eligible businesses may finance operating expenses,
+              inventory and short-term cash flow needs.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="symbol">⚙</div>
+            <h3>Equipment Financing</h3>
+            <p>
+              Learn about funding considerations for eligible machinery, tools,
+              technology and business equipment.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="symbol">↗</div>
+            <h3>Business Expansion</h3>
+            <p>
+              Consider funding requirements for expanding operations, increasing
+              capacity or opening a new location.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=85"
+          alt="Business paperwork and financial documents"
+          loading="lazy"
+        />
+
+        <div>
+          <div class="eyebrow">Prepare Before Applying</div>
+          <h2>Business Loan Documents</h2>
+          <p class="muted">
+            Depending on the business structure and lender, you may be asked to
+            provide the following documents.
+          </p>
+
+          <ul class="checks">
+            <li>Business registration and identity documents</li>
+            <li>PAN and applicable KYC documents</li>
+            <li>Business bank statements</li>
+            <li>Financial statements and income tax returns</li>
+            <li>Business plan or purpose of financing</li>
+          </ul>
+
+          <p class="muted">
+            Requirements vary. Confirm the exact checklist with your lender.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Plan Responsibly</div>
+          <h2>What Should You Consider?</h2>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="symbol">▤</div>
+            <h3>Cash Flow</h3>
+            <p>
+              Estimate available cash flow and make sure repayments fit your
+              operating budget.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="symbol">%</div>
+            <h3>Interest and Fees</h3>
+            <p>
+              Compare the applicable interest rate, processing fees and other
+              borrowing costs.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="symbol">✓</div>
+            <h3>Eligibility</h3>
+            <p>
+              Lenders may consider business vintage, turnover, credit history
+              and repayment capacity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Frequently Asked Questions</div>
+          <h2>Business Loan FAQs</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>What is a business loan?</summary>
+            <p>
+              A business loan is financing offered by a lender for eligible
+              business purposes and repaid according to the agreed terms.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can a small business explore financing?</summary>
+            <p>
+              Potentially, yes. Eligibility depends on the lender's criteria,
+              business records, financial position and other applicable
+              conditions.
+            </p>
+          </details>
+
+          <details>
+            <summary>Which documents are generally required?</summary>
+            <p>
+              Business registration, KYC, bank statements and financial records
+              may be requested. Requirements vary by lender and product.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does FinTrust guarantee business loan approval?</summary>
+            <p>
+              No. This is a frontend demo website. A lender must assess
+              eligibility and confirm any actual loan offer.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="eyebrow">Plan Your Business Finances</div>
+            <h2>Ready to Explore Your Options?</h2>
+            <p>
+              Estimate repayments and prepare for a conversation with a lender.
+            </p>
+          </div>
+          <a href="loan-calculator.html" class="btn">Calculate EMI →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html" style="color: white"
+              >⌂ FinTrust</a
+            >
+            <p>
+              Finance information and loan planning for personal and business
+              goals.
+            </p>
+          </div>
+
+          <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="blog.html">Blog</a>
+          </div>
+
+          <div>
+            <h3>Loan Services</h3>
+            <a href="home-loans.html">Home Loans</a>
+            <a href="personal-loans.html">Personal Loans</a>
+            <a href="business-loans.html">Business Loans</a>
+            <a href="loan-calculator.html">EMI Calculator</a>
+          </div>
+
+          <div>
+            <h3>Contact & Legal</h3>
+            <a href="contact.html">Contact Us</a>
+            <a href="apply-now.html">Get Started</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © <span id="year"></span> FinTrust. Frontend demo only. No loan
+          approval is provided.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
+        menuBtn.textContent = navLinks.classList.contains("show") ? "✕" : "☰";
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("show");
+          menuBtn.textContent = "☰";
+        });
+      });
+    </script>
+  </body>
+</html>

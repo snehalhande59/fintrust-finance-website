@@ -1,0 +1,2479 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#073f37" />
+    <meta
+      name="description"
+      content="Explore home loans, personal loans, business finance and EMI planning with the FinTrust educational finance website demo."
+    />
+    <title>FinTrust | Your Financial Future Starts Here</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --deep: #032720;
+        --mint: #19b88a;
+        --mint-light: #dff8ed;
+        --cream: #f3f4e9;
+        --white: #fff;
+        --text: #233d36;
+        --muted: #70817a;
+        --line: #e2e9e2;
+        --shadow: 0 18px 45px rgba(3, 39, 32, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 95px;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        color: var(--text);
+        background: #fff;
+        line-height: 1.65;
+        overflow-x: hidden;
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      img,
+      video {
+        max-width: 100%;
+      }
+      img {
+        display: block;
+      }
+      .container {
+        width: min(1180px, 91%);
+        margin: auto;
+      }
+      section {
+        position: relative;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        line-height: 1.2;
+      }
+      .section-label {
+        color: #b87551;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 11px;
+        font-weight: 800;
+        display: inline-block;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        color: var(--dark);
+        font-size: clamp(30px, 4vw, 44px);
+        letter-spacing: -0.8px;
+      }
+      .section-intro {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 14px;
+        margin: 13px auto 0;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 13px 19px;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: 800;
+        transition:
+          background 0.25s,
+          color 0.25s,
+          transform 0.25s,
+          border-color 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-mint {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .btn-mint:hover {
+        background: #5be0b2;
+      }
+      .btn-white {
+        background: white;
+        color: var(--green);
+      }
+      .btn-white:hover {
+        background: var(--mint-light);
+      }
+      .btn-outline {
+        border-color: rgba(255, 255, 255, 0.4);
+        color: white;
+        background: transparent;
+      }
+      .btn-outline:hover {
+        border-color: var(--mint);
+        color: var(--mint);
+      }
+
+      /* NAVIGATION */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.97);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+      .navbar {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        flex-shrink: 0;
+        color: var(--green);
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -1.2px;
+      }
+      .logo-mark {
+        width: 39px;
+        height: 39px;
+        display: grid;
+        place-items: center;
+        background: var(--green);
+        color: var(--mint);
+        border-radius: 7px;
+        font-size: 23px;
+      }
+      .logo-name span {
+        color: #c78056;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 21px;
+      }
+      .nav-links a {
+        position: relative;
+        padding: 29px 0;
+        color: #53645e;
+        font-size: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--mint);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        flex-shrink: 0;
+      }
+      .nav-apply {
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .nav-apply:hover {
+        color: var(--mint);
+      }
+      .nav-start {
+        padding: 12px 14px;
+        background: var(--green);
+        color: white;
+        font-size: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .nav-start:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .menu-toggle {
+        display: none;
+        width: 43px;
+        height: 43px;
+        border: 0;
+        border-radius: 5px;
+        background: var(--cream);
+        color: var(--green);
+        font-size: 24px;
+      }
+
+      /* HERO */
+      .hero {
+        background: var(--green);
+        color: white;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.15;
+        background-image: linear-gradient(
+          135deg,
+          transparent 48%,
+          rgba(255, 255, 255, 0.32) 49%,
+          transparent 50%
+        );
+        background-size: 70px 70px;
+        mask-image: linear-gradient(90deg, black, transparent 85%);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 550px;
+        height: 550px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        right: 3%;
+        top: -280px;
+        z-index: -1;
+      }
+      .hero-layout {
+        min-height: 515px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 28px;
+        padding-top: 42px;
+        padding-bottom: 40px;
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 3;
+        padding: 15px 0;
+      }
+      .hero-kicker {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #a2ead3;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .hero-kicker::before {
+        content: "";
+        width: 24px;
+        height: 1px;
+        background: var(--mint);
+      }
+      .hero h1 {
+        font-size: clamp(40px, 5.3vw, 68px);
+        font-weight: 600;
+        letter-spacing: -2.6px;
+        line-height: 1.03;
+        margin-top: 23px;
+      }
+      .hero h1 span {
+        display: block;
+        color: #a4e6d0;
+      }
+      .hero-copy > p {
+        max-width: 480px;
+        margin-top: 22px;
+        color: #d0e2db;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 25px;
+      }
+      .hero-checks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 17px;
+        margin-top: 24px;
+      }
+      .hero-checks span {
+        color: #c5e6da;
+        font-size: 10px;
+      }
+      .hero-checks span::before {
+        content: "✓";
+        color: var(--mint);
+        margin-right: 5px;
+        font-weight: 800;
+      }
+
+      /* HERO VISUAL */
+      .hero-visual {
+        position: relative;
+        min-height: 400px;
+        display: grid;
+        place-items: center;
+        perspective: 1000px;
+      }
+      .hero-orbit {
+        position: absolute;
+        width: min(360px, 75%);
+        aspect-ratio: 1;
+        background: radial-gradient(
+          circle at 38% 35%,
+          #20d5a0 0%,
+          #13a77d 48%,
+          #087a60 75%
+        );
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 24px rgba(25, 184, 138, 0.05),
+          0 0 80px rgba(25, 184, 138, 0.13);
+        animation: orbitPulse 5s ease-in-out infinite;
+      }
+      .hero-orbit::before,
+      .hero-orbit::after {
+        content: "";
+        position: absolute;
+        inset: -30px;
+        border: 1px solid rgba(168, 244, 221, 0.12);
+        border-radius: 50%;
+      }
+      .hero-orbit::after {
+        inset: -60px;
+        border-color: rgba(168, 244, 221, 0.07);
+      }
+      .hero-phone {
+        position: relative;
+        z-index: 2;
+        width: 235px;
+        padding: 10px;
+        border-radius: 36px;
+        background: #f6f7f2;
+        border: 5px solid #dce5dd;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        color: var(--green);
+        transform: rotate(-8deg);
+        animation: phoneFloat 5s ease-in-out infinite;
+      }
+      .phone-notch {
+        height: 8px;
+        width: 65px;
+        border-radius: 10px;
+        background: #173e36;
+        margin: 0 auto 14px;
+      }
+      .phone-brand {
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 17px;
+      }
+      .phone-label {
+        font-size: 8px;
+        color: #70817a;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .phone-amount {
+        margin-top: 8px;
+        background: var(--green);
+        color: white;
+        border-radius: 12px;
+        padding: 18px 13px;
+      }
+      .phone-amount strong {
+        display: block;
+        font-size: 24px;
+        margin-top: 8px;
+        letter-spacing: -0.5px;
+      }
+      .phone-amount small {
+        color: #bfead9;
+        font-size: 8px;
+      }
+      .phone-info {
+        padding: 12px 2px 8px;
+        display: grid;
+        gap: 12px;
+      }
+      .phone-info-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 8px;
+        border-bottom: 1px solid #e3ebe5;
+        padding-bottom: 8px;
+      }
+      .phone-info-row strong {
+        color: #087b5d;
+      }
+      .phone-button {
+        display: block;
+        background: var(--mint);
+        color: var(--dark);
+        text-align: center;
+        padding: 10px 5px;
+        border-radius: 7px;
+        font-size: 9px;
+        font-weight: 800;
+      }
+      .floating-card {
+        position: absolute;
+        z-index: 4;
+        background: white;
+        color: var(--green);
+        border-radius: 3px;
+        padding: 14px 17px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.17);
+        animation: floatCard 4.5s ease-in-out infinite;
+      }
+      .floating-card small {
+        display: block;
+        color: var(--muted);
+        font-size: 9px;
+      }
+      .floating-card strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 13px;
+      }
+      .float-one {
+        left: 0;
+        bottom: 69px;
+      }
+      .float-two {
+        right: 0;
+        top: 70px;
+        padding: 12px;
+        animation-delay: -2s;
+      }
+      .float-two .float-icon {
+        color: var(--mint);
+        font-size: 24px;
+      }
+      .hero-spark {
+        position: absolute;
+        right: 2%;
+        top: 20%;
+        color: #a8ead7;
+        font-size: 39px;
+        animation: spark 4s ease-in-out infinite;
+      }
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-8deg);
+        }
+        50% {
+          transform: translateY(-13px) rotate(-5deg);
+        }
+      }
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-11px);
+        }
+      }
+      @keyframes orbitPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.04);
+        }
+      }
+      @keyframes spark {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: rotate(0);
+        }
+        50% {
+          opacity: 1;
+          transform: rotate(35deg);
+        }
+      }
+
+      /* TRUST STRIP */
+      .trust-strip {
+        border-bottom: 1px solid var(--line);
+        background: white;
+      }
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 23px 0;
+      }
+      .trust-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      .trust-icon {
+        color: #109875;
+        font-size: 21px;
+        flex-shrink: 0;
+      }
+      .trust-item strong {
+        display: block;
+        color: var(--green);
+        font-size: 10px;
+      }
+      .trust-item small {
+        display: block;
+        color: var(--muted);
+        font-size: 9px;
+        margin-top: 2px;
+      }
+
+      /* ABOUT */
+      .about {
+        padding: 85px 0;
+        background: white;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 75px;
+        align-items: center;
+      }
+      .about-visual {
+        min-height: 380px;
+        position: relative;
+        padding: 0 55px 45px 0;
+      }
+      .about-main-image {
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+        border-radius: 2px;
+        background: var(--cream);
+      }
+      .about-badge {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 205px;
+        background: var(--green);
+        color: white;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+      .about-badge .avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #d7e7dd;
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+      .about-badge strong {
+        display: block;
+        font-size: 12px;
+      }
+      .about-badge p {
+        font-size: 10px;
+        color: #c7ddd3;
+        margin-top: 5px;
+      }
+      .about-badge em {
+        display: block;
+        font-family: "Playfair Display", serif;
+        color: #a5e8d2;
+        font-size: 23px;
+        margin-top: 10px;
+      }
+      .about-copy .section-title {
+        margin-top: 14px;
+      }
+      .about-copy > p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 16px;
+      }
+      .about-values {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-top: 26px;
+      }
+      .value-icon {
+        color: #129879;
+        font-size: 21px;
+      }
+      .value h3 {
+        font-size: 12px;
+        margin-top: 6px;
+        color: var(--green);
+      }
+      .value p {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .about-copy .btn {
+        margin-top: 23px;
+        background: var(--green);
+        color: white;
+      }
+      .about-copy .btn:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+
+      /* SERVICES */
+      .services {
+        background: var(--cream);
+        padding: 82px 0 88px;
+      }
+      .section-heading {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 37px;
+      }
+      .section-heading .section-title {
+        margin-top: 12px;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 23px;
+      }
+      .service-card {
+        min-width: 0;
+        perspective: 1200px;
+        min-height: 430px;
+      }
+      .service-flipper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 430px;
+        transform-style: preserve-3d;
+        transition: transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .service-card:hover .service-flipper,
+      .service-card:focus-within .service-flipper,
+      .service-card.flipped .service-flipper {
+        transform: rotateY(180deg);
+      }
+      .service-front,
+      .service-back {
+        position: absolute;
+        inset: 0;
+        min-height: 430px;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        background: white;
+        border: 1px solid rgba(7, 63, 55, 0.07);
+        box-shadow: 0 7px 20px rgba(3, 39, 32, 0.035);
+        overflow: hidden;
+      }
+      .service-front {
+        display: flex;
+        flex-direction: column;
+      }
+      .service-image {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        background: #e4e9df;
+      }
+      .service-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 20px 19px;
+      }
+      .service-icon {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        margin-top: -21px;
+        position: relative;
+        background: #e2f8ed;
+        border-radius: 50%;
+        color: #0b7c5c;
+        border: 3px solid white;
+        font-size: 19px;
+      }
+      .service-content h3 {
+        font-size: 17px;
+        color: var(--dark);
+        margin-top: 12px;
+      }
+      .service-content p {
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 8px;
+      }
+      .service-checks {
+        display: grid;
+        gap: 5px;
+        margin-top: 12px;
+      }
+      .service-checks span {
+        font-size: 10px;
+        color: #536d63;
+      }
+      .service-checks span::before {
+        content: "✓";
+        color: var(--mint);
+        margin-right: 7px;
+        font-weight: 800;
+      }
+      .service-link {
+        display: inline-flex;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 15px;
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--green);
+      }
+      .service-link:hover {
+        color: #109875;
+      }
+      .service-back {
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 26px;
+        background: var(--green);
+        color: white;
+      }
+      .back-symbol {
+        font-size: 30px;
+        color: var(--mint);
+      }
+      .service-back h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 27px;
+        margin-top: 15px;
+      }
+      .service-back p {
+        color: #d0e2db;
+        font-size: 12px;
+        margin-top: 13px;
+      }
+      .service-back ul {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+        margin-top: 17px;
+      }
+      .service-back li {
+        font-size: 11px;
+        color: #dcece4;
+      }
+      .service-back li::before {
+        content: "✓";
+        color: var(--mint);
+        margin-right: 8px;
+      }
+      .service-back .btn {
+        align-self: flex-start;
+        margin-top: 21px;
+      }
+      .service-card:focus-within {
+        outline: 2px solid var(--mint);
+        outline-offset: 3px;
+      }
+      .services-cta {
+        text-align: center;
+        margin-top: 32px;
+      }
+      .services-cta .btn {
+        border: 1px solid #d6ded4;
+        color: var(--green);
+        background: transparent;
+      }
+      .services-cta .btn:hover {
+        background: white;
+        border-color: var(--mint);
+      }
+
+      /* WHY FINTRUST */
+      .why {
+        background: var(--dark);
+        color: white;
+        padding: 85px 0;
+        overflow: hidden;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .why .section-title {
+        color: white;
+        margin-top: 13px;
+      }
+      .why-copy > p {
+        color: #c6dbd1;
+        font-size: 13px;
+        margin-top: 17px;
+        max-width: 450px;
+      }
+      .why-list {
+        display: grid;
+        gap: 0;
+        margin-top: 22px;
+      }
+      .why-item {
+        display: flex;
+        gap: 13px;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .why-item:last-child {
+        border-bottom: 0;
+      }
+      .why-icon {
+        width: 35px;
+        height: 35px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.09);
+        color: var(--mint);
+      }
+      .why-item strong {
+        font-size: 12px;
+        display: block;
+      }
+      .why-item p {
+        color: #c6dbd1;
+        font-size: 11px;
+        margin-top: 4px;
+      }
+      .why-copy .btn {
+        margin-top: 21px;
+      }
+      .why-visual {
+        position: relative;
+      }
+      .why-image {
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+        background: #204b40;
+      }
+      .why-note {
+        position: absolute;
+        left: -22px;
+        bottom: -23px;
+        background: var(--mint);
+        color: var(--dark);
+        padding: 18px 22px;
+        box-shadow: var(--shadow);
+      }
+      .why-note strong {
+        display: block;
+        font-size: 15px;
+      }
+      .why-note small {
+        display: block;
+        font-size: 10px;
+        margin-top: 4px;
+      }
+
+      /* VIDEO */
+      .video-section {
+        padding: 82px 0;
+        background: white;
+      }
+      .video-layout {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        align-items: center;
+        gap: 50px;
+      }
+      .video-copy .section-title {
+        margin-top: 13px;
+      }
+      .video-copy p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 15px;
+      }
+      .video-copy .btn {
+        background: var(--green);
+        color: white;
+        margin-top: 23px;
+      }
+      .video-copy .btn:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .video-frame {
+        position: relative;
+        overflow: hidden;
+        min-height: 290px;
+        aspect-ratio: 16/9;
+        background: #123d32;
+        box-shadow: var(--shadow);
+      }
+      .video-frame video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .video-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          0deg,
+          rgba(3, 39, 32, 0.55),
+          transparent 65%
+        );
+      }
+      .video-caption {
+        position: absolute;
+        left: 20px;
+        bottom: 18px;
+        color: white;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .video-caption strong {
+        display: block;
+        font-size: 15px;
+      }
+      .video-caption small {
+        color: #d8e9e0;
+        font-size: 10px;
+      }
+
+      /* HOW IT WORKS */
+      .steps-section {
+        background: #f7f9f5;
+        padding: 80px 0;
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 38px;
+      }
+      .journey-step {
+        padding: 24px 20px;
+        background: white;
+        border: 1px solid var(--line);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .journey-step:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+      .journey-num {
+        width: 39px;
+        height: 39px;
+        display: grid;
+        place-items: center;
+        background: var(--mint-light);
+        color: var(--green);
+        font-weight: 800;
+        border-radius: 50%;
+      }
+      .journey-step h3 {
+        font-size: 14px;
+        color: var(--green);
+        margin-top: 17px;
+      }
+      .journey-step p {
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 9px;
+      }
+
+      /* CALCULATOR */
+      .calculator-section {
+        background: var(--cream);
+        padding: 80px 0;
+      }
+      .calculator-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 35px;
+        align-items: start;
+      }
+      .calculator-panel,
+      .calculator-result {
+        background: white;
+        padding: 28px;
+        border: 1px solid var(--line);
+      }
+      .calculator-panel h3,
+      .calculator-result h3 {
+        color: var(--green);
+        font-size: 18px;
+      }
+      .calc-field {
+        margin-top: 22px;
+      }
+      .calc-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .calc-label output {
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .calc-field input[type="range"] {
+        width: 100%;
+        margin-top: 15px;
+        accent-color: var(--mint);
+        cursor: pointer;
+      }
+      .calc-limits {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        color: var(--muted);
+      }
+      .calculator-result {
+        background: var(--green);
+        color: white;
+      }
+      .calculator-result h3 {
+        color: white;
+      }
+      .result-label {
+        font-size: 12px;
+        color: #d1e6dc;
+        margin-top: 24px;
+      }
+      .result-amount {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(30px, 4vw, 44px);
+        color: var(--mint);
+        margin-top: 6px;
+        overflow-wrap: anywhere;
+      }
+      .result-divider {
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        margin: 22px 0;
+      }
+      .result-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 7px 0;
+        font-size: 12px;
+      }
+      .result-row span:first-child {
+        color: #d1e6dc;
+      }
+      .result-row strong {
+        text-align: right;
+      }
+      .calc-disclaimer {
+        color: #d1e6dc;
+        font-size: 10px;
+        margin-top: 20px;
+      }
+      .calculator-result .btn {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      /* TRUST CTA */
+      .cta-section {
+        background: white;
+        padding: 70px 0;
+      }
+      .cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 38px;
+        background: var(--cream);
+        border: 1px solid #e6eadf;
+      }
+      .cta-box h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(26px, 3.5vw, 37px);
+        color: var(--dark);
+      }
+      .cta-box p {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 10px;
+        max-width: 560px;
+      }
+      .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .cta-buttons .btn:first-child {
+        background: var(--green);
+        color: white;
+      }
+      .cta-buttons .btn:last-child {
+        border-color: #cbd8ce;
+        color: var(--green);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--deep);
+        color: white;
+        padding: 55px 0 20px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 35px;
+        padding-bottom: 35px;
+      }
+      .footer-brand p {
+        max-width: 285px;
+        color: #b8ccc5;
+        font-size: 12px;
+        margin-top: 16px;
+      }
+      .footer-heading {
+        font-size: 12px;
+        margin-bottom: 16px;
+      }
+      .footer-links {
+        display: grid;
+        gap: 10px;
+      }
+      .footer-links a {
+        color: #b8ccc5;
+        font-size: 11px;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--mint);
+      }
+      .footer-disclaimer {
+        border-top: 1px solid rgba(255, 255, 255, 0.13);
+        padding: 17px 0;
+        color: #b8ccc5;
+        font-size: 10px;
+        line-height: 1.7;
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255, 255, 255, 0.13);
+        padding-top: 17px;
+        color: #b8ccc5;
+        font-size: 10px;
+      }
+
+      /* REVEAL ANIMATIONS */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1100px) {
+        .nav-links {
+          gap: 13px;
+        }
+        .nav-links a {
+          font-size: 10px;
+        }
+        .nav-actions {
+          gap: 9px;
+        }
+        .nav-start {
+          padding: 11px 10px;
+        }
+        .about-grid {
+          gap: 45px;
+        }
+        .why-grid {
+          gap: 40px;
+        }
+        .services-grid {
+          gap: 16px;
+        }
+        .service-content {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
+      @media (max-width: 850px) {
+        .navbar {
+          min-height: 70px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .nav-actions {
+          margin-left: auto;
+        }
+        .nav-start {
+          display: none;
+        }
+        .nav-links {
+          display: none;
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          max-height: calc(100vh - 70px);
+          overflow-y: auto;
+          background: white;
+          padding: 12px 5% 22px;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          border-top: 1px solid var(--line);
+          box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 13px 0;
+          font-size: 13px;
+          border-bottom: 1px solid #edf1ed;
+        }
+        .hero-layout {
+          min-height: 0;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          padding-top: 35px;
+          padding-bottom: 35px;
+        }
+        .hero h1 {
+          font-size: clamp(37px, 6vw, 52px);
+        }
+        .hero-visual {
+          min-height: 350px;
+        }
+        .hero-phone {
+          width: 200px;
+        }
+        .phone-amount strong {
+          font-size: 21px;
+        }
+        .float-one {
+          left: -3px;
+          bottom: 45px;
+        }
+        .float-two {
+          right: -5px;
+        }
+        .trust-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .trust-item {
+          justify-content: flex-start;
+        }
+        .about-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
+        }
+        .about-visual {
+          min-height: 310px;
+          padding-right: 32px;
+        }
+        .about-main-image {
+          height: 275px;
+        }
+        .about-badge {
+          width: 175px;
+          padding: 16px;
+        }
+        .services-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .service-card,
+        .service-flipper,
+        .service-front,
+        .service-back {
+          min-height: 420px;
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .why-visual {
+          margin: 15px 0 10px 22px;
+        }
+        .video-layout {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .video-frame {
+          max-width: 800px;
+          width: 100%;
+        }
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .calculator-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+        .calculator-panel,
+        .calculator-result {
+          padding: 22px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .cta-box {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        .container {
+          width: 91%;
+        }
+        .logo {
+          font-size: 23px;
+        }
+        .logo-mark {
+          width: 36px;
+          height: 36px;
+        }
+        .nav-apply {
+          font-size: 10px;
+        }
+        .hero-layout {
+          grid-template-columns: 1fr;
+          padding-top: 45px;
+          padding-bottom: 20px;
+        }
+        .hero-copy {
+          padding: 0;
+        }
+        .hero h1 {
+          font-size: clamp(40px, 10vw, 56px);
+        }
+        .hero-copy > p {
+          font-size: 12px;
+        }
+        .hero-buttons .btn {
+          flex: 1;
+          padding: 12px 10px;
+          font-size: 11px;
+        }
+        .hero-checks {
+          gap: 10px;
+        }
+        .hero-checks span {
+          font-size: 9px;
+        }
+        .hero-visual {
+          min-height: 345px;
+          margin-top: 5px;
+        }
+        .hero-orbit {
+          width: 265px;
+        }
+        .hero-phone {
+          width: 190px;
+        }
+        .float-one {
+          left: 0;
+          bottom: 36px;
+        }
+        .float-two {
+          right: 0;
+          top: 35px;
+        }
+        .floating-card {
+          padding: 11px;
+        }
+        .floating-card strong {
+          font-size: 11px;
+        }
+        .hero-spark {
+          right: 3%;
+          top: 10%;
+        }
+        .trust-grid {
+          gap: 18px 12px;
+          padding: 20px 0;
+        }
+        .trust-item {
+          gap: 8px;
+        }
+        .trust-item strong {
+          font-size: 10px;
+        }
+        .trust-item small {
+          font-size: 9px;
+        }
+        .about,
+        .services,
+        .why,
+        .video-section,
+        .steps-section,
+        .calculator-section {
+          padding: 60px 0;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+        .about-visual {
+          min-height: 315px;
+          max-width: 470px;
+        }
+        .about-main-image {
+          height: 275px;
+        }
+        .about-copy .section-title {
+          font-size: 34px;
+        }
+        .about-values {
+          gap: 20px;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .service-card,
+        .service-flipper,
+        .service-front,
+        .service-back {
+          min-height: 420px;
+        }
+        .service-image {
+          height: 210px;
+        }
+        .service-content {
+          padding-left: 21px;
+          padding-right: 21px;
+        }
+        .section-heading {
+          margin-bottom: 27px;
+        }
+        .section-title {
+          font-size: 33px;
+        }
+        .why-image {
+          height: 260px;
+        }
+        .why-note {
+          left: -13px;
+          padding: 14px 16px;
+        }
+        .video-frame {
+          min-height: 200px;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .journey-step {
+          padding: 17px 13px;
+        }
+        .calculator-grid {
+          grid-template-columns: 1fr;
+        }
+        .calculator-panel,
+        .calculator-result {
+          padding: 22px 18px;
+        }
+        .cta-section {
+          padding: 45px 0;
+        }
+        .cta-box {
+          padding: 25px 19px;
+        }
+        .cta-buttons {
+          width: 100%;
+        }
+        .cta-buttons .btn {
+          flex: 1;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px 20px;
+        }
+      }
+      @media (max-width: 370px) {
+        .nav-apply {
+          display: none;
+        }
+        .hero h1 {
+          font-size: 38px;
+        }
+        .hero-visual {
+          min-height: 315px;
+        }
+        .hero-phone {
+          width: 172px;
+        }
+        .hero-orbit {
+          width: 230px;
+        }
+        .floating-card small {
+          font-size: 8px;
+        }
+        .float-one {
+          left: -3px;
+        }
+        .float-two {
+          right: -3px;
+        }
+        .trust-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .trust-item strong {
+          font-size: 9px;
+        }
+        .about-badge {
+          width: 155px;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Avoid content appearing broken when browser cannot animate */
+      @media (prefers-reduced-motion: reduce) {
+        .service-card:hover .service-flipper,
+        .service-card:focus-within .service-flipper,
+        .service-card.flipped .service-flipper {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a href="index.html" class="logo" aria-label="FinTrust home">
+          <span class="logo-mark">⌂</span>
+          <span class="logo-name">Fin<span>Trust</span></span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="apply-now.html" class="nav-apply">Apply Now ↗</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <div class="hero-kicker">Your financial future starts here</div>
+            <h1>Home Loans <span>Simplified.</span></h1>
+            <p>
+              Discover finance options designed around your goals. Explore home
+              loans, personal finance and business funding with clear,
+              straightforward guidance.
+            </p>
+            <div class="hero-buttons">
+              <a href="apply-now.html" class="btn btn-mint"
+                >Start My Enquiry <span>→</span></a
+              >
+              <a href="services.html" class="btn btn-white">Explore Services</a>
+            </div>
+            <div class="hero-checks">
+              <span>Clear information</span>
+              <span>Guided process</span>
+              <span>Simple planning</span>
+            </div>
+          </div>
+
+          <div
+            class="hero-visual"
+            aria-label="Illustration of a financial dashboard"
+          >
+            <div class="hero-orbit"></div>
+            <span class="hero-spark" aria-hidden="true">✳</span>
+
+            <div class="hero-phone">
+              <div class="phone-notch"></div>
+              <div class="phone-brand">⌂ FinTrust</div>
+              <div class="phone-label">Your financial dashboard</div>
+              <div class="phone-amount">
+                <small>ILLUSTRATIVE LOAN AMOUNT</small>
+                <strong>₹25,00,000</strong>
+                <small>Example amount only</small>
+              </div>
+              <div class="phone-info">
+                <div class="phone-info-row">
+                  <span>Loan Type</span><strong>Home</strong>
+                </div>
+                <div class="phone-info-row">
+                  <span>Estimated EMI</span><strong>Demo</strong>
+                </div>
+                <div class="phone-info-row">
+                  <span>Application</span><strong>Explore</strong>
+                </div>
+              </div>
+              <a class="phone-button" href="loan-calculator.html"
+                >Explore Your Options</a
+              >
+            </div>
+
+            <div class="floating-card float-one">
+              <small>✦ Transparent finance guidance</small>
+              <strong>Built Around Your Goals</strong>
+            </div>
+            <div class="floating-card float-two">
+              <span class="float-icon">↗</span>
+              <small>Plan with clarity</small>
+              <strong>Know Your Options</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRUST STRIP -->
+      <section class="trust-strip" aria-label="Website features">
+        <div class="container trust-grid">
+          <div class="trust-item">
+            <span class="trust-icon">▤</span>
+            <div>
+              <strong>Clear Documentation</strong
+              ><small>Know what may be required</small>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">♧</span>
+            <div>
+              <strong>Guided Information</strong
+              ><small>Understand your options</small>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">▦</span>
+            <div>
+              <strong>EMI Planning Tools</strong
+              ><small>Explore estimated payments</small>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">☏</span>
+            <div>
+              <strong>Helpful Resources</strong
+              ><small>Explore our guides</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="about" id="about">
+        <div class="container about-grid">
+          <div class="about-visual reveal">
+            <img
+              class="about-main-image"
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85"
+              alt="Financial planning documents being reviewed at a desk"
+              loading="lazy"
+            />
+            <div class="about-badge">
+              <div class="avatar">♙</div>
+              <strong>Our Finance Team</strong>
+              <p>Sample team profile for website demonstration.</p>
+              <em>FinTrust</em>
+            </div>
+          </div>
+
+          <div class="about-copy reveal">
+            <span class="section-label">About FinTrust</span>
+            <h2 class="section-title">
+              Driven by Trust.<br />Guided by Your Goals
+            </h2>
+            <p>
+              Making financial decisions can feel complicated. FinTrust is a
+              demo finance agency website designed to help visitors explore loan
+              options, understand estimated repayments and prepare for the next
+              step.
+            </p>
+            <div class="about-values">
+              <div class="value">
+                <div class="value-icon">◎</div>
+                <h3>Our Vision</h3>
+                <p>
+                  Make financial information easier to understand and compare.
+                </p>
+              </div>
+              <div class="value">
+                <div class="value-icon">◈</div>
+                <h3>Our Mission</h3>
+                <p>
+                  Provide a simple, clear and customer-focused online
+                  experience.
+                </p>
+              </div>
+            </div>
+            <a href="about.html" class="btn">More About Us <span>→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES WITH 3D FLIP CARDS -->
+      <section class="services" id="services">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-label">Our Services</span>
+            <h2 class="section-title">
+              Your Financial Journey<br />Starts Here
+            </h2>
+            <p class="section-intro">
+              Explore common financing options and learn what may be involved
+              before making a financial decision.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article
+              class="service-card reveal"
+              tabindex="0"
+              aria-label="Home Loans. Hover, focus, or tap to see details."
+            >
+              <div class="service-flipper">
+                <div class="service-front">
+                  <img
+                    class="service-image"
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=850&q=85"
+                    alt="Model house representing home finance"
+                    loading="lazy"
+                  />
+                  <div class="service-content">
+                    <div class="service-icon">⌂</div>
+                    <h3>Home Loans</h3>
+                    <p>
+                      Explore financing options for purchasing, building or
+                      renovating a home.
+                    </p>
+                    <div class="service-checks">
+                      <span>Home purchase planning</span>
+                      <span>EMI estimation</span>
+                      <span>Document checklist</span>
+                    </div>
+                    <a href="home-loans.html" class="service-link"
+                      >Explore Home Loans <span>→</span></a
+                    >
+                  </div>
+                </div>
+                <div class="service-back">
+                  <span class="back-symbol">⌂</span>
+                  <h3>Plan Your Home Loan</h3>
+                  <p>
+                    Learn about potential eligibility, down payments, repayment
+                    periods and the documents a lender may request.
+                  </p>
+                  <ul>
+                    <li>Understand common loan terms</li>
+                    <li>Estimate your monthly EMI</li>
+                    <li>Review potential costs</li>
+                  </ul>
+                  <a href="home-loans.html" class="btn btn-mint"
+                    >Explore Home Loans →</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              tabindex="0"
+              aria-label="Personal Loans. Hover, focus, or tap to see details."
+            >
+              <div class="service-flipper">
+                <div class="service-front">
+                  <img
+                    class="service-image"
+                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=850&q=85"
+                    alt="Calculator and paperwork for personal financial planning"
+                    loading="lazy"
+                  />
+                  <div class="service-content">
+                    <div class="service-icon">▣</div>
+                    <h3>Personal Loans</h3>
+                    <p>
+                      Understand personal finance options for eligible planned
+                      expenses.
+                    </p>
+                    <div class="service-checks">
+                      <span>Understand loan terms</span>
+                      <span>Compare repayment estimates</span>
+                      <span>Prepare documents</span>
+                    </div>
+                    <a href="personal-loans.html" class="service-link"
+                      >Explore Personal Loans <span>→</span></a
+                    >
+                  </div>
+                </div>
+                <div class="service-back">
+                  <span class="back-symbol">▣</span>
+                  <h3>Borrow Thoughtfully</h3>
+                  <p>
+                    Review possible fees, interest rates, repayment periods and
+                    affordability before considering a personal loan.
+                  </p>
+                  <ul>
+                    <li>Understand total repayment</li>
+                    <li>Review common requirements</li>
+                    <li>Compare your options</li>
+                  </ul>
+                  <a href="personal-loans.html" class="btn btn-mint"
+                    >Explore Personal Loans →</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              tabindex="0"
+              aria-label="Business Loans. Hover, focus, or tap to see details."
+            >
+              <div class="service-flipper">
+                <div class="service-front">
+                  <img
+                    class="service-image"
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=850&q=85"
+                    alt="Modern commercial buildings representing business finance"
+                    loading="lazy"
+                  />
+                  <div class="service-content">
+                    <div class="service-icon">▥</div>
+                    <h3>Business Loans</h3>
+                    <p>
+                      Learn about potential financing for working capital and
+                      business growth.
+                    </p>
+                    <div class="service-checks">
+                      <span>Business funding overview</span>
+                      <span>Financial preparation</span>
+                      <span>Application guidance</span>
+                    </div>
+                    <a href="business-loans.html" class="service-link"
+                      >Explore Business Loans <span>→</span></a
+                    >
+                  </div>
+                </div>
+                <div class="service-back">
+                  <span class="back-symbol">▥</span>
+                  <h3>Support Business Planning</h3>
+                  <p>
+                    Explore common funding types and understand how repayment
+                    commitments can affect business cash flow.
+                  </p>
+                  <ul>
+                    <li>Estimate funding requirements</li>
+                    <li>Prepare financial records</li>
+                    <li>Review repayment obligations</li>
+                  </ul>
+                  <a href="business-loans.html" class="btn btn-mint"
+                    >Explore Business Loans →</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="services-cta reveal">
+            <a href="services.html" class="btn"
+              >View All Services <span>→</span></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY FINTRUST -->
+      <section class="why" id="why-us">
+        <div class="container why-grid">
+          <div class="why-copy reveal">
+            <span class="section-label">Why Choose FinTrust</span>
+            <h2 class="section-title">A Clearer Way to<br />Explore Finance</h2>
+            <p>
+              Good financial decisions begin with understanding the options,
+              costs and requirements involved.
+            </p>
+
+            <div class="why-list">
+              <div class="why-item">
+                <span class="why-icon">▤</span>
+                <div>
+                  <strong>Transparent Information</strong>
+                  <p>
+                    Learn about common loan terms, possible fees and repayment
+                    obligations.
+                  </p>
+                </div>
+              </div>
+              <div class="why-item">
+                <span class="why-icon">♙</span>
+                <div>
+                  <strong>Goal-Based Guidance</strong>
+                  <p>
+                    Explore information based on the type of financing you are
+                    considering.
+                  </p>
+                </div>
+              </div>
+              <div class="why-item">
+                <span class="why-icon">▦</span>
+                <div>
+                  <strong>Simple Planning Tools</strong>
+                  <p>
+                    Estimate monthly instalments and total repayment using the
+                    demo calculator.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a href="how-it-works.html" class="btn btn-mint"
+              >Discover How It Works →</a
+            >
+          </div>
+
+          <div class="why-visual reveal">
+            <img
+              class="why-image"
+              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=85"
+              alt="Professionals collaborating on a financial planning task"
+              loading="lazy"
+            />
+            <div class="why-note">
+              <strong>One Step at a Time</strong>
+              <small>Clearer information for better planning</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTIONAL VIDEO -->
+      <section class="video-section" id="video">
+        <div class="container video-layout">
+          <div class="video-copy reveal">
+            <span class="section-label">Explore FinTrust</span>
+            <h2 class="section-title">
+              Finance Should Feel Easier to Understand
+            </h2>
+            <p>
+              Explore the key steps involved in researching a loan, estimating
+              repayments and preparing for a conversation with a lender.
+            </p>
+            <a href="how-it-works.html" class="btn">Explore the Process →</a>
+          </div>
+
+          <div class="video-frame reveal">
+            <video
+              id="financeVideo"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85"
+              aria-label="Finance planning video"
+            >
+              <source src="videos/finance-hero.mp4" type="video/mp4" />
+            </video>
+            <div class="video-overlay"></div>
+            <div class="video-caption">
+              <strong>Plan with Confidence</strong>
+              <small>Understand. Compare. Prepare.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="steps-section" id="how-it-works">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-label">How It Works</span>
+            <h2 class="section-title">Understand the Journey</h2>
+            <p class="section-intro">
+              A simple overview of the common stages in a real loan process.
+              Requirements and decisions vary by lender.
+            </p>
+          </div>
+
+          <div class="steps-grid">
+            <article class="journey-step reveal">
+              <div class="journey-num">01</div>
+              <h3>Explore Your Needs</h3>
+              <p>
+                Choose a loan type and consider how much you may need to borrow.
+              </p>
+            </article>
+            <article class="journey-step reveal">
+              <div class="journey-num">02</div>
+              <h3>Check Affordability</h3>
+              <p>
+                Estimate repayments and review your budget before taking on
+                debt.
+              </p>
+            </article>
+            <article class="journey-step reveal">
+              <div class="journey-num">03</div>
+              <h3>Prepare Documents</h3>
+              <p>
+                A real lender may ask for identity, address, income or business
+                documents.
+              </p>
+            </article>
+            <article class="journey-step reveal">
+              <div class="journey-num">04</div>
+              <h3>Lender Review</h3>
+              <p>
+                The lender assesses eligibility and makes its own decision.
+                Approval is not guaranteed.
+              </p>
+            </article>
+          </div>
+
+          <div class="services-cta reveal">
+            <a href="how-it-works.html" class="btn">Read the Full Process →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE DEMO EMI CALCULATOR -->
+      <section class="calculator-section" id="emi-calculator">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-label">Plan Your Repayments</span>
+            <h2 class="section-title">Try Our EMI Calculator</h2>
+            <p class="section-intro">
+              Adjust the amount, interest rate and tenure to see an illustrative
+              monthly repayment estimate.
+            </p>
+          </div>
+
+          <div class="calculator-grid">
+            <div class="calculator-panel reveal">
+              <h3>Loan Details</h3>
+
+              <div class="calc-field">
+                <div class="calc-label">
+                  <label for="calcAmount">Loan Amount</label>
+                  <output id="amountLabel">₹10,00,000</output>
+                </div>
+                <input
+                  id="calcAmount"
+                  type="range"
+                  min="50000"
+                  max="5000000"
+                  step="50000"
+                  value="1000000"
+                />
+                <div class="calc-limits">
+                  <span>₹50,000</span><span>₹50,00,000</span>
+                </div>
+              </div>
+
+              <div class="calc-field">
+                <div class="calc-label">
+                  <label for="calcRate">Annual Interest Rate</label>
+                  <output id="rateLabel">9%</output>
+                </div>
+                <input
+                  id="calcRate"
+                  type="range"
+                  min="5"
+                  max="24"
+                  step=".25"
+                  value="9"
+                />
+                <div class="calc-limits"><span>5%</span><span>24%</span></div>
+              </div>
+
+              <div class="calc-field">
+                <div class="calc-label">
+                  <label for="calcYears">Loan Tenure</label>
+                  <output id="yearsLabel">20 years</output>
+                </div>
+                <input
+                  id="calcYears"
+                  type="range"
+                  min="1"
+                  max="30"
+                  step="1"
+                  value="20"
+                />
+                <div class="calc-limits">
+                  <span>1 year</span><span>30 years</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calculator-result reveal">
+              <h3>Your Estimated Repayment</h3>
+              <p class="result-label">Estimated monthly EMI</p>
+              <div class="result-amount" id="emiResult">₹8,997</div>
+              <hr class="result-divider" />
+              <div class="result-row">
+                <span>Principal amount</span
+                ><strong id="principalResult">₹10,00,000</strong>
+              </div>
+              <div class="result-row">
+                <span>Total interest</span
+                ><strong id="interestResult">₹11,59,280</strong>
+              </div>
+              <div class="result-row">
+                <span>Total repayment</span
+                ><strong id="totalResult">₹21,59,280</strong>
+              </div>
+              <p class="calc-disclaimer">
+                Illustrative estimate only. Actual EMI, fees, rate type and
+                repayment terms depend on the lender and loan agreement.
+              </p>
+              <a href="loan-calculator.html" class="btn btn-mint"
+                >Open Full Calculator →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPLY CTA -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-box reveal">
+            <div>
+              <span class="section-label">Your Next Step</span>
+              <h2>Start with information.<br />Move forward with clarity.</h2>
+              <p>
+                Explore your options and review the application demo. This
+                website does not issue loans or guarantee approval.
+              </p>
+            </div>
+            <div class="cta-buttons">
+              <a href="apply-now.html" class="btn">Start My Enquiry →</a>
+              <a href="contact.html" class="btn">Contact Us ↗</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo" style="color: white">
+              <span
+                class="logo-mark"
+                style="background: var(--mint); color: var(--dark)"
+                >⌂</span
+              >
+              <span class="logo-name">Fin<span>Trust</span></span>
+            </a>
+            <p>
+              A finance agency website demonstration for exploring loan
+              information, planning estimated repayments and learning about
+              common application steps.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links">
+              <a href="index.html">Home</a>
+              <a href="about.html">About Us</a>
+              <a href="services.html">Services</a>
+              <a href="blog.html">Financial Blog</a>
+              <a href="contact.html">Contact Us</a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Loan Services</h4>
+            <div class="footer-links">
+              <a href="home-loans.html">Home Loans</a>
+              <a href="personal-loans.html">Personal Loans</a>
+              <a href="business-loans.html">Business Loans</a>
+              <a href="loan-calculator.html">EMI Calculator</a>
+              <a href="how-it-works.html">How It Works</a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Get Started</h4>
+            <div class="footer-links">
+              <a href="apply-now.html">Apply Now</a>
+              <a href="contact.html">Ask a Question</a>
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms.html">Terms & Conditions</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-disclaimer">
+          <strong>Demo notice:</strong> FinTrust on this page is a frontend
+          demonstration, not a bank or lending institution. The content and EMI
+          estimates are illustrative and do not constitute a loan offer,
+          financial advice, eligibility confirmation or approval. No loan
+          application is submitted from this homepage. Verify the lender, fees,
+          terms and privacy practices through official channels before sharing
+          sensitive information.
+        </div>
+
+        <div class="footer-bottom">
+          <span>© <span id="currentYear"></span> FinTrust. Demo website.</span>
+          <span
+            >Understand your options before making financial decisions.</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* MOBILE NAVIGATION */
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", () => {
+        const open = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.textContent = open ? "×" : "☰";
+        document.body.classList.toggle("menu-open", open);
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.textContent = "☰";
+          document.body.classList.remove("menu-open");
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 850) {
+          navLinks.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.textContent = "☰";
+          document.body.classList.remove("menu-open");
+        }
+      });
+
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      /* 3D CARD TAP SUPPORT FOR TOUCHSCREENS */
+      document.querySelectorAll(".service-card").forEach((card) => {
+        card.addEventListener("click", (event) => {
+          if (event.target.closest("a")) return;
+
+          const isTouch = window.matchMedia("(hover: none)").matches;
+          if (isTouch) {
+            document.querySelectorAll(".service-card").forEach((other) => {
+              if (other !== card) other.classList.remove("flipped");
+            });
+            card.classList.toggle("flipped");
+          }
+        });
+
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            if (event.target === card) {
+              event.preventDefault();
+              card.classList.toggle("flipped");
+            }
+          }
+        });
+      });
+
+      /* SECTION REVEAL ANIMATION */
+      const revealElements = document.querySelectorAll(".reveal");
+
+      if (
+        "IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+      } else {
+        revealElements.forEach((element) => element.classList.add("visible"));
+      }
+
+      /* REAL-TIME DEMO EMI CALCULATOR */
+      const calcAmount = document.getElementById("calcAmount");
+      const calcRate = document.getElementById("calcRate");
+      const calcYears = document.getElementById("calcYears");
+
+      const formatINR = (value) =>
+        new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 0,
+        }).format(Math.round(value || 0));
+
+      function updateEMI() {
+        const principal = Number(calcAmount.value);
+        const annualRate = Number(calcRate.value);
+        const years = Number(calcYears.value);
+        const months = years * 12;
+        const monthlyRate = annualRate / 1200;
+
+        let emi;
+        if (monthlyRate === 0) {
+          emi = principal / months;
+        } else {
+          const factor = Math.pow(1 + monthlyRate, months);
+          emi = (principal * monthlyRate * factor) / (factor - 1);
+        }
+
+        const totalPayment = emi * months;
+        const totalInterest = totalPayment - principal;
+
+        document.getElementById("amountLabel").textContent =
+          formatINR(principal);
+        document.getElementById("rateLabel").textContent = annualRate + "%";
+        document.getElementById("yearsLabel").textContent =
+          years + (years === 1 ? " year" : " years");
+        document.getElementById("emiResult").textContent = formatINR(emi);
+        document.getElementById("principalResult").textContent =
+          formatINR(principal);
+        document.getElementById("interestResult").textContent =
+          formatINR(totalInterest);
+        document.getElementById("totalResult").textContent =
+          formatINR(totalPayment);
+      }
+
+      [calcAmount, calcRate, calcYears].forEach((input) => {
+        input.addEventListener("input", updateEMI);
+      });
+      updateEMI();
+
+      /* VIDEO: attempt autoplay; browser may block it in some situations.
+   Poster image remains visible if the MP4 file is missing/unavailable. */
+      const financeVideo = document.getElementById("financeVideo");
+
+      financeVideo.play().catch(() => {
+        // Browser may require a user interaction to start playback.
+      });
+    </script>
+  </body>
+</html>

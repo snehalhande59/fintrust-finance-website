@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Loans | FinTrust</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #18332e;
+        --muted: #687872;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.7;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        width: 91%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: white;
+        box-shadow: 0 2px 12px #0001;
+      }
+      .navbar {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #0a9473;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        padding: 12px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .menu-btn {
+        display: none;
+        border: 0;
+        background: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .hero {
+        background:
+          linear-gradient(90deg, #043c34f5, #043c34b5),
+          url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=85")
+            center/cover no-repeat;
+        color: white;
+        padding: 85px 0;
+      }
+      .hero-content {
+        max-width: 720px;
+      }
+      .eyebrow {
+        color: #d8a37e;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      h1 {
+        font-size: clamp(37px, 5vw, 60px);
+        line-height: 1.15;
+      }
+      .hero h1 span {
+        color: #69e4bd;
+      }
+      .hero p {
+        max-width: 600px;
+        color: #d9e6e0;
+        margin: 20px 0 25px;
+        font-size: 14px;
+      }
+      .hero .btn,
+      .cta .btn {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .breadcrumb {
+        font-size: 12px;
+        color: #d9e6e0;
+        margin-top: 22px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+      .heading {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+      .heading h2,
+      h2 {
+        font-size: clamp(27px, 4vw, 39px);
+        line-height: 1.25;
+      }
+      .heading p,
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .photo {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .checks {
+        list-style: none;
+        margin: 18px 0;
+      }
+      .checks li {
+        margin: 10px 0;
+        font-size: 13px;
+      }
+      .checks li:before {
+        content: "✓";
+        color: #07866a;
+        font-weight: 800;
+        margin-right: 10px;
+      }
+      .cream {
+        background: var(--cream);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .card {
+        background: white;
+        padding: 27px;
+        border: 1px solid #e3e9e2;
+        border-radius: 5px;
+      }
+      .symbol {
+        font-size: 29px;
+        color: #0a9674;
+      }
+      .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .faq {
+        max-width: 850px;
+        margin: auto;
+      }
+      details {
+        background: white;
+        border-bottom: 1px solid #e2e7e0;
+        padding: 18px;
+        margin-bottom: 8px;
+      }
+      summary {
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      details p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 12px;
+      }
+      .cta {
+        background: var(--green);
+        color: white;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+      }
+      .cta p {
+        color: #d4e3dc;
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 45px 0 18px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 25px;
+        padding-bottom: 28px;
+      }
+      footer h3 {
+        font-size: 14px;
+        margin-bottom: 13px;
+      }
+      footer p,
+      footer a {
+        display: block;
+        color: #c3d5cd;
+        font-size: 11px;
+        margin: 8px 0;
+      }
+      footer a:hover {
+        color: var(--mint);
+      }
+      .copyright {
+        border-top: 1px solid #ffffff25;
+        padding-top: 18px;
+        color: #c3d5cd;
+        font-size: 11px;
+      }
+
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 8px;
+        }
+        .nav-links a {
+          font-size: 10px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .navbar {
+          min-height: 68px;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 15px 5%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .nav-links.show {
+          display: flex;
+        }
+        .nav-links a {
+          font-size: 13px;
+          padding: 9px 0;
+          border-bottom: 1px solid #eee;
+        }
+        .navbar > .btn {
+          display: none;
+        }
+        .hero {
+          padding: 60px 0;
+        }
+        section {
+          padding: 48px 0;
+        }
+        .grid,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          height: 280px;
+        }
+        .cta {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 28px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 400px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container navbar">
+        <a class="logo" href="index.html">⌂ FinTrust</a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a class="btn" href="apply-now.html">Get Started →</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">FinTrust Personal Loans</div>
+        <h1>Personal Loans for<br /><span>Your Life Goals</span></h1>
+        <p>
+          Explore general information about personal borrowing for planned
+          expenses, unexpected costs and important milestones. Compare the terms
+          carefully before choosing a lender.
+        </p>
+        <a href="apply-now.html" class="btn">Explore Application →</a>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="services.html">Services</a> /
+          Personal Loans
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <div>
+          <div class="eyebrow">Borrow with a Plan</div>
+          <h2>Understand Your Personal Loan Options</h2>
+          <p class="muted">
+            A personal loan may help eligible applicants meet certain expenses.
+            Before borrowing, consider the total repayment amount, interest
+            rate, fees and your ability to make payments on time.
+          </p>
+          <ul class="checks">
+            <li>Understand the total borrowing cost</li>
+            <li>Estimate a monthly repayment amount</li>
+            <li>Review interest rates and applicable fees</li>
+            <li>Consider your existing financial commitments</li>
+          </ul>
+          <a class="btn" href="loan-calculator.html"
+            >Calculate Estimated EMI →</a
+          >
+        </div>
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85"
+          alt="Financial planning on a computer"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Common Financial Needs</div>
+          <h2>What Might a Personal Loan Cover?</h2>
+          <p>
+            Permitted uses depend on the lender's terms and applicable rules.
+          </p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="symbol">◇</div>
+            <h3>Planned Expenses</h3>
+            <p>
+              Explore borrowing considerations for eligible purchases and
+              important personal milestones.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">✧</div>
+            <h3>Medical or Emergency Costs</h3>
+            <p>
+              Understand possible funding options for unexpected expenses and
+              review the repayment implications.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">▤</div>
+            <h3>Debt Management</h3>
+            <p>
+              Compare any proposed consolidation option carefully, including
+              fees and the overall cost of repayment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=85"
+          alt="Personal financial documents"
+          loading="lazy"
+        />
+        <div>
+          <div class="eyebrow">Before You Apply</div>
+          <h2>Eligibility and Documents</h2>
+          <p class="muted">
+            Eligibility requirements vary by lender. They may assess the
+            following factors:
+          </p>
+          <ul class="checks">
+            <li>Age and residency criteria</li>
+            <li>Income and employment details</li>
+            <li>Credit history and existing repayments</li>
+            <li>Identity and address proof</li>
+            <li>Income proof and bank statements</li>
+          </ul>
+          <p class="muted">
+            Always confirm the required documents and eligibility criteria with
+            the lender.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Make an Informed Decision</div>
+          <h2>Things to Compare</h2>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="symbol">₹</div>
+            <h3>Interest Rate</h3>
+            <p>
+              Check the applicable rate and whether it is fixed or variable,
+              where relevant.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">◷</div>
+            <h3>Repayment Tenure</h3>
+            <p>
+              Compare monthly instalments and the total interest over the
+              proposed term.
+            </p>
+          </div>
+          <div class="card">
+            <div class="symbol">✓</div>
+            <h3>Fees and Conditions</h3>
+            <p>
+              Review processing fees, late payment charges and prepayment
+              conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Frequently Asked Questions</div>
+          <h2>Personal Loan FAQs</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What is a personal loan?</summary>
+            <p>
+              A personal loan is money borrowed from a lender and repaid
+              according to agreed terms, usually through scheduled instalments.
+            </p>
+          </details>
+          <details>
+            <summary>How can I estimate my monthly EMI?</summary>
+            <p>
+              Open the FinTrust EMI calculator and enter the principal amount,
+              annual interest rate and repayment tenure to get an illustrative
+              estimate.
+            </p>
+          </details>
+          <details>
+            <summary>Will a personal loan application be approved?</summary>
+            <p>
+              Approval depends on the lender's assessment and eligibility
+              requirements. FinTrust does not guarantee approval.
+            </p>
+          </details>
+          <details>
+            <summary>Can I apply through this demo website?</summary>
+            <p>
+              This is a frontend demonstration. The application link is for
+              showcasing the interface and does not submit a real loan
+              application.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="eyebrow">Plan Your Repayments</div>
+            <h2>Know Your Estimated EMI</h2>
+            <p>
+              Estimate your monthly payment before discussing a loan with a
+              lender.
+            </p>
+          </div>
+          <a class="btn" href="loan-calculator.html">Calculate EMI →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html" style="color: white"
+              >⌂ FinTrust</a
+            >
+            <p>
+              Finance information and loan planning for a clearer borrowing
+              journey.
+            </p>
+          </div>
+          <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="blog.html">Blog</a>
+          </div>
+          <div>
+            <h3>Loan Services</h3>
+            <a href="home-loans.html">Home Loans</a>
+            <a href="personal-loans.html">Personal Loans</a>
+            <a href="business-loans.html">Business Loans</a>
+            <a href="loan-calculator.html">EMI Calculator</a>
+          </div>
+          <div>
+            <h3>Contact & Legal</h3>
+            <a href="contact.html">Contact Us</a>
+            <a href="apply-now.html">Get Started</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+          </div>
+        </div>
+        <div class="copyright">
+          © <span id="year"></span> FinTrust. Frontend demo only. No loan
+          approval is provided.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
+        menuBtn.textContent = navLinks.classList.contains("show") ? "✕" : "☰";
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("show");
+          menuBtn.textContent = "☰";
+        });
+      });
+    </script>
+  </body>
+</html>

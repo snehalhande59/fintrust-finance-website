@@ -1,0 +1,1692 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply for a Loan | FinTrust</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #193b35;
+        --muted: #71817b;
+        --line: #e1e8e2;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "DM Sans", sans-serif;
+        color: var(--text);
+        background: #f7f8f4;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      input,
+      select,
+      textarea,
+      button {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+
+      .topbar {
+        background: var(--dark);
+        color: #d6e9e2;
+        padding: 8px 5%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 12px;
+      }
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: #fffffffa;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+      .logo span {
+        color: #c47d50;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 19px;
+      }
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--mint);
+      }
+      .menu-toggle {
+        display: none;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 7px 12px;
+        background: white;
+        color: var(--green);
+        font-size: 20px;
+      }
+
+      .hero {
+        background:
+          linear-gradient(100deg, #052e28f5, #073f37d9),
+          url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85")
+            center/cover;
+        color: white;
+        padding: 54px 24px;
+      }
+      .hero-inner {
+        max-width: 1150px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        animation: rise 0.65s ease;
+      }
+      .eyebrow {
+        color: #d99c73;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.12;
+        letter-spacing: -1.5px;
+        margin: 10px 0;
+      }
+      .hero h1 span {
+        color: #9be6ce;
+      }
+      .hero p {
+        color: #d4e5df;
+        font-size: 13px;
+        max-width: 650px;
+        margin-bottom: 0;
+      }
+      .hero-note {
+        flex: 0 0 240px;
+        border: 1px solid #ffffff38;
+        background: #ffffff12;
+        border-radius: 5px;
+        padding: 20px;
+      }
+      .hero-note strong {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      .hero-note p {
+        font-size: 11px;
+        margin: 0;
+      }
+
+      .page-layout {
+        max-width: 1150px;
+        margin: 35px auto 65px;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 310px;
+        align-items: start;
+        gap: 25px;
+      }
+      .form-card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 30px;
+        box-shadow: 0 8px 35px #052e2807;
+      }
+      .demo-notice {
+        padding: 12px 14px;
+        margin-bottom: 24px;
+        background: #fff6e8;
+        border: 1px solid #f1dfbd;
+        border-radius: 4px;
+        color: #79551b;
+        font-size: 12px;
+      }
+      .demo-notice strong {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .progress-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .progress-top span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .progress-top strong {
+        color: var(--green);
+      }
+      .progress-track {
+        height: 6px;
+        background: #e9efea;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 27px;
+      }
+      .progress-bar {
+        height: 100%;
+        width: 25%;
+        background: var(--mint);
+        border-radius: 10px;
+        transition: width 0.3s ease;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 30px;
+      }
+      .step-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+      .step-number {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1px solid #d9e3dc;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        background: white;
+      }
+      .step-label {
+        font-size: 10px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+      .step-item.active .step-number,
+      .step-item.done .step-number {
+        background: var(--green);
+        color: white;
+        border-color: var(--green);
+      }
+      .step-item.active .step-label,
+      .step-item.done .step-label {
+        color: var(--green);
+      }
+
+      .form-step {
+        display: none;
+      }
+      .form-step.active {
+        display: block;
+        animation: rise 0.25s ease;
+      }
+      .form-step h2 {
+        margin: 0 0 5px;
+        font-size: 25px;
+        letter-spacing: -0.7px;
+        line-height: 1.25;
+      }
+      .step-description {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 0 0 25px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .field {
+        margin-bottom: 18px;
+        min-width: 0;
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 7px;
+      }
+      .required {
+        color: #c45e42;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+        border: 1px solid #dce5df;
+        border-radius: 4px;
+        background: white;
+        color: var(--text);
+        outline: none;
+        font-size: 13px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--mint);
+        box-shadow: 0 0 0 3px #19b88a1a;
+      }
+      .field textarea {
+        min-height: 85px;
+        resize: vertical;
+      }
+      .field small {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        margin-top: 5px;
+      }
+      .input-prefix {
+        position: relative;
+      }
+      .input-prefix span {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .input-prefix input {
+        padding-left: 30px;
+      }
+
+      .loan-types {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+      .loan-option {
+        position: relative;
+      }
+      .loan-option input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loan-option label {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        height: 100%;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .loan-option label:hover {
+        border-color: #8bcbb5;
+      }
+      .loan-option input:checked + label {
+        border: 2px solid var(--mint);
+        background: #f1fbf6;
+        padding: 14px;
+      }
+      .loan-icon {
+        width: 39px;
+        height: 39px;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        background: var(--cream);
+        border-radius: 5px;
+        font-size: 19px;
+      }
+      .loan-option strong {
+        display: block;
+        font-size: 12px;
+      }
+      .loan-option small {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        margin-top: 3px;
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+      .btn {
+        border: 0;
+        border-radius: 4px;
+        background: var(--mint);
+        color: var(--dark);
+        padding: 12px 19px;
+        font-size: 12px;
+        font-weight: 800;
+        transition: 0.2s;
+      }
+      .btn:hover {
+        background: #45d5ad;
+        transform: translateY(-1px);
+      }
+      .btn-secondary {
+        background: white;
+        color: var(--green);
+        border: 1px solid #d6e2da;
+      }
+      .btn-secondary:hover {
+        background: #f0f5f0;
+      }
+      .btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .inline-error {
+        display: none;
+        background: #fff0eb;
+        color: #963c27;
+        border: 1px solid #f1cfc3;
+        padding: 11px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      .inline-error.show {
+        display: block;
+      }
+
+      .review-box {
+        background: #f7f9f5;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 17px;
+        margin-bottom: 20px;
+      }
+      .review-box h3 {
+        font-size: 14px;
+        margin: 0 0 12px;
+      }
+      .review-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .review-item small {
+        display: block;
+        font-size: 10px;
+        color: var(--muted);
+      }
+      .review-item strong {
+        display: block;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+      .consent {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 11px;
+        color: var(--muted);
+        margin: 17px 0;
+      }
+      .consent input {
+        margin-top: 4px;
+        accent-color: var(--green);
+      }
+
+      .sidebar-card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 23px;
+        margin-bottom: 18px;
+      }
+      .sidebar-card h3 {
+        margin: 0 0 14px;
+        font-size: 16px;
+      }
+      .side-point {
+        display: flex;
+        gap: 11px;
+        margin: 16px 0;
+      }
+      .side-icon {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #e9f7f0;
+        color: #087457;
+        font-size: 15px;
+      }
+      .side-point strong {
+        display: block;
+        font-size: 12px;
+      }
+      .side-point p {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 3px 0 0;
+      }
+      .sidebar-photo {
+        width: 100%;
+        height: 155px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      .disclaimer {
+        background: var(--cream);
+        border-radius: 4px;
+        padding: 15px;
+        font-size: 11px;
+        color: #586a61;
+      }
+      .disclaimer strong {
+        display: block;
+        color: var(--green);
+        margin-bottom: 5px;
+      }
+
+      .success-panel {
+        display: none;
+        text-align: center;
+        padding: 25px 10px;
+      }
+      .success-panel.show {
+        display: block;
+        animation: rise 0.4s ease;
+      }
+      .success-icon {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: #e1f7ec;
+        color: #087457;
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+        margin: 0 auto 20px;
+      }
+      .success-panel h2 {
+        font-size: 27px;
+        margin: 0 0 10px;
+      }
+      .success-panel p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .reference-box {
+        padding: 14px;
+        background: #f5f8f4;
+        border: 1px dashed #b6d4c5;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .reference-box small {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+      }
+      .reference-box strong {
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: var(--green);
+      }
+      .success-warning {
+        background: #fff6e8;
+        color: #79551b;
+        padding: 12px;
+        font-size: 11px;
+        border-radius: 4px;
+        text-align: left;
+      }
+
+      .footer {
+        background: var(--dark);
+        color: #d8e8e1;
+        padding: 40px 24px 20px;
+      }
+      .footer-grid {
+        max-width: 1150px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 28px;
+      }
+      .footer h3,
+      .footer h4 {
+        color: white;
+        margin-top: 0;
+      }
+      .footer h4 {
+        font-size: 13px;
+      }
+      .footer p,
+      .footer a {
+        color: #a9c5bb;
+        font-size: 12px;
+      }
+      .footer a {
+        display: block;
+        margin: 9px 0;
+      }
+      .footer a:hover {
+        color: #54ddb3;
+      }
+      .copyright {
+        max-width: 1150px;
+        margin: 25px auto 0;
+        padding-top: 15px;
+        border-top: 1px solid #ffffff20;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: #9bb8ae;
+        font-size: 11px;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .nav-links {
+          gap: 11px;
+        }
+        .nav-links a {
+          font-size: 11px;
+        }
+        .page-layout {
+          grid-template-columns: minmax(0, 1fr) 260px;
+        }
+        .form-card {
+          padding: 23px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 760px) {
+        .topbar {
+          padding: 8px 16px;
+        }
+        .nav-inner {
+          flex-wrap: wrap;
+          padding: 12px 18px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          order: 3;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 11px 4px;
+          border-top: 1px solid var(--line);
+          font-size: 13px;
+        }
+        .hero {
+          padding: 43px 20px;
+        }
+        .hero-inner {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-note {
+          flex: auto;
+        }
+        .page-layout {
+          display: flex;
+          flex-direction: column;
+          margin: 22px auto 45px;
+          padding: 0 14px;
+        }
+        .form-card {
+          width: 100%;
+          padding: 22px 17px;
+        }
+        .sidebar {
+          width: 100%;
+        }
+        .steps {
+          gap: 4px;
+        }
+        .step-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+        }
+        .step-label {
+          font-size: 10px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 450px) {
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .loan-types {
+          grid-template-columns: 1fr;
+        }
+        .review-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-actions .btn {
+          padding: 11px 12px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .copyright {
+          flex-direction: column;
+        }
+        .hero h1 {
+          letter-spacing: -0.8px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <span>FinTrust Financial Services — Demo Website</span>
+      <span>Explore your options with clear information</span>
+    </div>
+
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">⌂ Fin<span>Trust</span></a>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Your application journey</div>
+          <h1>Let's find the right<br /><span>loan option for you.</span></h1>
+          <p>
+            Share a few details about your requirements. Review your information
+            before submitting this demo application.
+          </p>
+        </div>
+        <div class="hero-note">
+          <strong>🔒 Your information matters</strong>
+          <p>
+            This demo runs in your browser only. Do not enter real sensitive
+            financial information. No application is sent to a lender.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <main class="page-layout">
+      <section class="form-card">
+        <div class="demo-notice">
+          <strong>Demo application — not a real loan application</strong>
+          This form demonstrates a loan application flow. Your information is
+          not sent to a bank, stored on a server or used to approve a loan.
+        </div>
+
+        <div id="applicationFlow">
+          <div class="progress-top">
+            <strong id="stepHeading">Step 1 of 4</strong>
+            <span id="stepPercent">25% completed</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+
+          <div class="steps">
+            <div class="step-item active" data-step-indicator="0">
+              <span class="step-number">1</span
+              ><span class="step-label">Loan Details</span>
+            </div>
+            <div class="step-item" data-step-indicator="1">
+              <span class="step-number">2</span
+              ><span class="step-label">Personal</span>
+            </div>
+            <div class="step-item" data-step-indicator="2">
+              <span class="step-number">3</span
+              ><span class="step-label">Income</span>
+            </div>
+            <div class="step-item" data-step-indicator="3">
+              <span class="step-number">4</span
+              ><span class="step-label">Review</span>
+            </div>
+          </div>
+
+          <form id="loanApplication" novalidate>
+            <!-- STEP 1 -->
+            <section class="form-step active" data-step="0">
+              <h2>What type of loan do you need?</h2>
+              <p class="step-description">
+                Select a loan type and share your estimated borrowing
+                requirements.
+              </p>
+
+              <div class="loan-types">
+                <div class="loan-option">
+                  <input
+                    type="radio"
+                    id="loanHome"
+                    name="loanType"
+                    value="Home Loan"
+                    required
+                  />
+                  <label for="loanHome">
+                    <span class="loan-icon">⌂</span>
+                    <span
+                      ><strong>Home Loan</strong
+                      ><small>Buying or building a home</small></span
+                    >
+                  </label>
+                </div>
+                <div class="loan-option">
+                  <input
+                    type="radio"
+                    id="loanPersonal"
+                    name="loanType"
+                    value="Personal Loan"
+                    required
+                  />
+                  <label for="loanPersonal">
+                    <span class="loan-icon">♙</span>
+                    <span
+                      ><strong>Personal Loan</strong
+                      ><small>Personal expenses or planned needs</small></span
+                    >
+                  </label>
+                </div>
+                <div class="loan-option">
+                  <input
+                    type="radio"
+                    id="loanBusiness"
+                    name="loanType"
+                    value="Business Loan"
+                    required
+                  />
+                  <label for="loanBusiness">
+                    <span class="loan-icon">▥</span>
+                    <span
+                      ><strong>Business Loan</strong
+                      ><small>Business costs or expansion</small></span
+                    >
+                  </label>
+                </div>
+                <div class="loan-option">
+                  <input
+                    type="radio"
+                    id="loanOther"
+                    name="loanType"
+                    value="Other Loan"
+                    required
+                  />
+                  <label for="loanOther">
+                    <span class="loan-icon">＋</span>
+                    <span
+                      ><strong>Other Requirement</strong
+                      ><small>Discuss another funding need</small></span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="loanAmount"
+                    >Estimated Loan Amount (₹)
+                    <span class="required">*</span></label
+                  >
+                  <div class="input-prefix">
+                    <span>₹</span>
+                    <input
+                      id="loanAmount"
+                      name="loanAmount"
+                      type="number"
+                      min="10000"
+                      max="100000000"
+                      step="1000"
+                      placeholder="e.g. 500000"
+                      required
+                    />
+                  </div>
+                  <small>Enter an amount between ₹10,000 and ₹10 crore.</small>
+                </div>
+                <div class="field">
+                  <label for="loanTenure"
+                    >Preferred Repayment Period
+                    <span class="required">*</span></label
+                  >
+                  <select id="loanTenure" name="loanTenure" required>
+                    <option value="">Select duration</option>
+                    <option value="1 year">1 year</option>
+                    <option value="2 years">2 years</option>
+                    <option value="3 years">3 years</option>
+                    <option value="5 years">5 years</option>
+                    <option value="10 years">10 years</option>
+                    <option value="15 years">15 years</option>
+                    <option value="20 years">20 years</option>
+                    <option value="25 years">25 years</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="loanPurpose"
+                  >Purpose of Loan <span class="required">*</span></label
+                >
+                <select id="loanPurpose" name="loanPurpose" required>
+                  <option value="">Select purpose</option>
+                  <option>Purchase a property</option>
+                  <option>Home construction or renovation</option>
+                  <option>Education or professional development</option>
+                  <option>Medical or personal expenses</option>
+                  <option>Debt consolidation</option>
+                  <option>Business expansion or working capital</option>
+                  <option>Equipment or inventory purchase</option>
+                  <option>Other purpose</option>
+                </select>
+              </div>
+            </section>
+
+            <!-- STEP 2 -->
+            <section class="form-step" data-step="1">
+              <h2>Your personal details</h2>
+              <p class="step-description">
+                Enter basic contact information for this demo. Use sample
+                details, not sensitive real data.
+              </p>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="fullName"
+                    >Full Name <span class="required">*</span></label
+                  >
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    minlength="2"
+                    maxlength="80"
+                    autocomplete="name"
+                    placeholder="Enter full name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="dob"
+                    >Date of Birth <span class="required">*</span></label
+                  >
+                  <input id="dob" name="dob" type="date" required />
+                  <small
+                    >Applicants must be at least 18. Actual lender rules
+                    vary.</small
+                  >
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="mobile"
+                    >Mobile Number <span class="required">*</span></label
+                  >
+                  <input
+                    id="mobile"
+                    name="mobile"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="10"
+                    pattern="[6-9][0-9]{9}"
+                    placeholder="10-digit mobile number"
+                    autocomplete="tel"
+                    required
+                  />
+                  <small>Demo validation only; no OTP is sent.</small>
+                </div>
+                <div class="field">
+                  <label for="email"
+                    >Email Address <span class="required">*</span></label
+                  >
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    maxlength="120"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="residence"
+                  >Residential Address <span class="required">*</span></label
+                >
+                <textarea
+                  id="residence"
+                  name="residence"
+                  minlength="8"
+                  maxlength="250"
+                  autocomplete="street-address"
+                  placeholder="Enter a sample address for the demo"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="city">City <span class="required">*</span></label>
+                  <input
+                    id="city"
+                    name="city"
+                    type="text"
+                    maxlength="60"
+                    autocomplete="address-level2"
+                    placeholder="City"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="pincode"
+                    >PIN Code <span class="required">*</span></label
+                  >
+                  <input
+                    id="pincode"
+                    name="pincode"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="[1-9][0-9]{5}"
+                    maxlength="6"
+                    placeholder="6-digit PIN code"
+                    autocomplete="postal-code"
+                    required
+                  />
+                </div>
+              </div>
+            </section>
+
+            <!-- STEP 3 -->
+            <section class="form-step" data-step="2">
+              <h2>Employment and income</h2>
+              <p class="step-description">
+                These sample details help demonstrate the kind of information a
+                lender may ask for. Actual requirements differ.
+              </p>
+
+              <div class="field">
+                <label for="employment"
+                  >Employment Type <span class="required">*</span></label
+                >
+                <select id="employment" name="employment" required>
+                  <option value="">Select employment type</option>
+                  <option value="Salaried">Salaried employee</option>
+                  <option value="Self-employed">
+                    Self-employed / Business owner
+                  </option>
+                  <option value="Professional">
+                    Self-employed professional
+                  </option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="company">Company / Business Name</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    maxlength="100"
+                    placeholder="Enter sample name"
+                  />
+                </div>
+                <div class="field">
+                  <label for="workExperience"
+                    >Work / Business Experience
+                    <span class="required">*</span></label
+                  >
+                  <select id="workExperience" name="workExperience" required>
+                    <option value="">Select experience</option>
+                    <option>Less than 1 year</option>
+                    <option>1–2 years</option>
+                    <option>3–5 years</option>
+                    <option>6–10 years</option>
+                    <option>More than 10 years</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="monthlyIncome"
+                    >Monthly Income (₹) <span class="required">*</span></label
+                  >
+                  <div class="input-prefix">
+                    <span>₹</span>
+                    <input
+                      id="monthlyIncome"
+                      name="monthlyIncome"
+                      type="number"
+                      min="0"
+                      max="100000000"
+                      step="1000"
+                      placeholder="e.g. 45000"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="existingEmi"
+                    >Existing Monthly EMI (₹)
+                    <span class="required">*</span></label
+                  >
+                  <div class="input-prefix">
+                    <span>₹</span>
+                    <input
+                      id="existingEmi"
+                      name="existingEmi"
+                      type="number"
+                      min="0"
+                      max="100000000"
+                      step="500"
+                      placeholder="Enter 0 if none"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="incomeSource"
+                  >Main Income Source <span class="required">*</span></label
+                >
+                <select id="incomeSource" name="incomeSource" required>
+                  <option value="">Select income source</option>
+                  <option>Salary</option>
+                  <option>Business income</option>
+                  <option>Professional income</option>
+                  <option>Rental income</option>
+                  <option>Other income</option>
+                </select>
+              </div>
+
+              <div class="disclaimer">
+                <strong>Important</strong>
+                Income figures are used only to demonstrate the form and are not
+                checked against documents. This demo does not calculate or
+                promise loan eligibility.
+              </div>
+            </section>
+
+            <!-- STEP 4 -->
+            <section class="form-step" data-step="3">
+              <h2>Review your application</h2>
+              <p class="step-description">
+                Check the information below. Use Back if you need to make
+                changes.
+              </p>
+
+              <div class="review-box">
+                <h3>Loan Details</h3>
+                <div class="review-grid" id="reviewLoan"></div>
+              </div>
+
+              <div class="review-box">
+                <h3>Personal Details</h3>
+                <div class="review-grid" id="reviewPersonal"></div>
+              </div>
+
+              <div class="review-box">
+                <h3>Income Details</h3>
+                <div class="review-grid" id="reviewIncome"></div>
+              </div>
+
+              <label class="consent">
+                <input type="checkbox" id="consent" required />
+                <span
+                  >I have reviewed the sample information and understand that
+                  this is a frontend demonstration only. No real loan
+                  application will be submitted, and no lender will contact me
+                  through this demo.</span
+                >
+              </label>
+
+              <div class="disclaimer">
+                Do not use this demo to submit actual identity documents, bank
+                account details, passwords, PINs or OTPs.
+              </div>
+            </section>
+
+            <div class="inline-error" id="formError" role="alert"></div>
+
+            <div class="form-actions" id="formActions">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="backBtn"
+                disabled
+              >
+                ← Back
+              </button>
+              <button type="button" class="btn" id="nextBtn">Continue →</button>
+            </div>
+          </form>
+        </div>
+
+        <section class="success-panel" id="successPanel" aria-live="polite">
+          <div class="success-icon">✓</div>
+          <div class="eyebrow">Demo completed</div>
+          <h2>You've completed the demo form.</h2>
+          <p>
+            Your information passed the browser-side form checks. This is not a
+            real loan submission or an approval.
+          </p>
+          <div class="reference-box">
+            <small>DEMO REFERENCE — NOT A BANK APPLICATION ID</small>
+            <strong id="demoReference"></strong>
+          </div>
+          <div class="success-warning">
+            <strong>What happens next?</strong><br />
+            No application has been sent, no credit check has taken place, and
+            no lender will contact you from this demo. For a real loan, contact
+            a regulated lender through its official website.
+          </div>
+          <br />
+          <button class="btn" type="button" id="startAgain">Start Again</button>
+          <a class="btn btn-secondary" href="index.html">Back to Home</a>
+        </section>
+      </section>
+
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <img
+            class="sidebar-photo"
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=85"
+            alt="Financial paperwork and calculator"
+          />
+          <h3>What to expect</h3>
+
+          <div class="side-point">
+            <div class="side-icon">1</div>
+            <div>
+              <strong>Share your requirements</strong>
+              <p>Select a loan type and estimated amount.</p>
+            </div>
+          </div>
+          <div class="side-point">
+            <div class="side-icon">2</div>
+            <div>
+              <strong>Provide basic details</strong>
+              <p>Enter sample personal and income information.</p>
+            </div>
+          </div>
+          <div class="side-point">
+            <div class="side-icon">3</div>
+            <div>
+              <strong>Review before submitting</strong>
+              <p>Check each section and confirm the demo notice.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Before you decide</h3>
+          <div class="side-point">
+            <div class="side-icon">₹</div>
+            <div>
+              <strong>Compare total costs</strong>
+              <p>Review interest, processing fees and total repayment.</p>
+            </div>
+          </div>
+          <div class="side-point">
+            <div class="side-icon">✓</div>
+            <div>
+              <strong>Check lender terms</strong>
+              <p>Eligibility and documents vary by lender.</p>
+            </div>
+          </div>
+          <div class="side-point">
+            <div class="side-icon">!</div>
+            <div>
+              <strong>Protect your details</strong>
+              <p>Never share OTPs, PINs or banking passwords.</p>
+            </div>
+          </div>
+          <a
+            href="loan-calculator.html"
+            class="btn"
+            style="display: block; text-align: center; margin-top: 20px"
+            >Calculate Estimated EMI →</a
+          >
+        </div>
+
+        <div class="disclaimer">
+          <strong>Transparency notice</strong>
+          FinTrust is a demo brand in this frontend project. No lender
+          partnership, approval process, interest rate or financial offer is
+          represented as real.
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>⌂ Fin<span style="color: #c47d50">Trust</span></h3>
+          <p>
+            Clear information to help people understand common financing options
+            and estimated repayments.
+          </p>
+          <p>Frontend demo only — not a lender or financial adviser.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How It Works</a>
+        </div>
+        <div>
+          <h4>Loan Options</h4>
+          <a href="home-loans.html">Home Loans</a>
+          <a href="personal-loans.html">Personal Loans</a>
+          <a href="business-loans.html">Business Loans</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+        </div>
+        <div>
+          <h4>Information</h4>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 FinTrust Demo. All rights reserved.</span>
+        <span>Educational information only. Check official lender terms.</span>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "×" : "☰";
+      });
+
+      const form = document.getElementById("loanApplication");
+      const steps = [...document.querySelectorAll(".form-step")];
+      const indicators = [...document.querySelectorAll(".step-item")];
+      const progressBar = document.getElementById("progressBar");
+      const stepHeading = document.getElementById("stepHeading");
+      const stepPercent = document.getElementById("stepPercent");
+      const backBtn = document.getElementById("backBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const errorBox = document.getElementById("formError");
+      const flow = document.getElementById("applicationFlow");
+      const successPanel = document.getElementById("successPanel");
+
+      let currentStep = 0;
+
+      function updateStep() {
+        steps.forEach((step, index) => {
+          step.classList.toggle("active", index === currentStep);
+        });
+
+        indicators.forEach((indicator, index) => {
+          indicator.classList.toggle("active", index === currentStep);
+          indicator.classList.toggle("done", index < currentStep);
+          indicator.querySelector(".step-number").textContent =
+            index < currentStep ? "✓" : String(index + 1);
+        });
+
+        const percent = Math.round(((currentStep + 1) / steps.length) * 100);
+        progressBar.style.width = percent + "%";
+        stepHeading.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+        stepPercent.textContent = percent + "% completed";
+        backBtn.disabled = currentStep === 0;
+        nextBtn.textContent =
+          currentStep === 3 ? "Submit Demo →" : "Continue →";
+        errorBox.classList.remove("show");
+      }
+
+      function validateCurrentStep() {
+        errorBox.classList.remove("show");
+
+        const activeStep = steps[currentStep];
+        const controls = [
+          ...activeStep.querySelectorAll("input,select,textarea"),
+        ];
+
+        for (const control of controls) {
+          if (control.type === "radio") continue;
+          if (!control.checkValidity()) {
+            control.reportValidity();
+            return false;
+          }
+        }
+
+        if (currentStep === 0) {
+          const selectedLoan = form.querySelector(
+            'input[name="loanType"]:checked',
+          );
+          if (!selectedLoan) {
+            showError("Please select a loan type to continue.");
+            document.getElementById("loanHome").focus();
+            return false;
+          }
+
+          const amount = Number(document.getElementById("loanAmount").value);
+          if (amount < 10000 || amount > 100000000) {
+            showError("Enter a loan amount between ₹10,000 and ₹10 crore.");
+            document.getElementById("loanAmount").focus();
+            return false;
+          }
+        }
+
+        if (currentStep === 1) {
+          const dobValue = document.getElementById("dob").value;
+          const dob = new Date(dobValue + "T00:00:00");
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+
+          if (!dobValue || dob >= today) {
+            showError("Please enter a valid date of birth.");
+            document.getElementById("dob").focus();
+            return false;
+          }
+
+          let age = today.getFullYear() - dob.getFullYear();
+          const monthDifference = today.getMonth() - dob.getMonth();
+          if (
+            monthDifference < 0 ||
+            (monthDifference === 0 && today.getDate() < dob.getDate())
+          ) {
+            age--;
+          }
+
+          if (age < 18) {
+            showError(
+              "For this demo, the applicant must be at least 18 years old.",
+            );
+            document.getElementById("dob").focus();
+            return false;
+          }
+        }
+
+        if (currentStep === 2) {
+          const income = Number(document.getElementById("monthlyIncome").value);
+          const emi = Number(document.getElementById("existingEmi").value);
+
+          if (income < 0 || emi < 0) {
+            showError("Income and existing EMI cannot be negative.");
+            return false;
+          }
+
+          if (emi > income && income > 0) {
+            showError(
+              "Your entered existing EMI is higher than your monthly income. Please check the figures.",
+            );
+            document.getElementById("existingEmi").focus();
+            return false;
+          }
+        }
+
+        if (currentStep === 3 && !document.getElementById("consent").checked) {
+          showError(
+            "Please confirm that you understand this is a demo application.",
+          );
+          document.getElementById("consent").focus();
+          return false;
+        }
+
+        return true;
+      }
+
+      function showError(message) {
+        errorBox.textContent = message;
+        errorBox.classList.add("show");
+      }
+
+      function money(value) {
+        const number = Number(value);
+        if (!Number.isFinite(number)) return "—";
+        return "₹" + number.toLocaleString("en-IN");
+      }
+
+      function reviewItem(label, value) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "review-item";
+
+        const small = document.createElement("small");
+        small.textContent = label;
+
+        const strong = document.createElement("strong");
+        strong.textContent = value || "Not provided";
+
+        wrapper.append(small, strong);
+        return wrapper;
+      }
+
+      function buildReview() {
+        const get = (id) => document.getElementById(id).value.trim();
+        const selectedLoan = form.querySelector(
+          'input[name="loanType"]:checked',
+        );
+
+        const groups = [
+          {
+            id: "reviewLoan",
+            items: [
+              ["Loan Type", selectedLoan ? selectedLoan.value : ""],
+              ["Estimated Amount", money(get("loanAmount"))],
+              ["Repayment Period", get("loanTenure")],
+              ["Loan Purpose", get("loanPurpose")],
+            ],
+          },
+          {
+            id: "reviewPersonal",
+            items: [
+              ["Full Name", get("fullName")],
+              ["Date of Birth", get("dob")],
+              ["Mobile Number", get("mobile")],
+              ["Email", get("email")],
+              ["Address", get("residence")],
+              ["City", get("city")],
+              ["PIN Code", get("pincode")],
+            ],
+          },
+          {
+            id: "reviewIncome",
+            items: [
+              ["Employment Type", get("employment")],
+              ["Company / Business", get("company") || "Not provided"],
+              ["Experience", get("workExperience")],
+              ["Monthly Income", money(get("monthlyIncome"))],
+              ["Existing EMI", money(get("existingEmi"))],
+              ["Income Source", get("incomeSource")],
+            ],
+          },
+        ];
+
+        groups.forEach((group) => {
+          const container = document.getElementById(group.id);
+          container.replaceChildren();
+          group.items.forEach(([label, value]) => {
+            container.appendChild(reviewItem(label, value));
+          });
+        });
+      }
+
+      nextBtn.addEventListener("click", () => {
+        if (!validateCurrentStep()) return;
+
+        if (currentStep < 3) {
+          if (currentStep === 2) buildReview();
+          currentStep++;
+          updateStep();
+          document.querySelector(".form-card").scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          return;
+        }
+
+        // Demo-only completion: no server request and no real application submission.
+        const reference =
+          "DEMO-" +
+          new Date().toISOString().slice(0, 10).replaceAll("-", "") +
+          "-" +
+          Math.random().toString(36).slice(2, 7).toUpperCase();
+
+        document.getElementById("demoReference").textContent = reference;
+        flow.style.display = "none";
+        successPanel.classList.add("show");
+
+        document.querySelector(".form-card").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+
+      backBtn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateStep();
+          document.querySelector(".form-card").scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+
+      document.getElementById("startAgain").addEventListener("click", () => {
+        form.reset();
+        currentStep = 0;
+        updateStep();
+        successPanel.classList.remove("show");
+        successPanel.style.display = "";
+        flow.style.display = "block";
+        document.querySelector(".form-card").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+
+      // Restrict the date picker to past dates.
+      const dobInput = document.getElementById("dob");
+      const now = new Date();
+      dobInput.max = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, "0"),
+        String(now.getDate()).padStart(2, "0"),
+      ].join("-");
+
+      updateStep();
+    </script>
+  </body>
+</html>

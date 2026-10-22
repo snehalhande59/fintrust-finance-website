@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How It Works | FinTrust Finance</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #18332e;
+        --muted: #687872;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.7;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        width: 91%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: white;
+        box-shadow: 0 2px 12px #0001;
+      }
+      .navbar {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #0a9473;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        padding: 12px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .menu-btn {
+        display: none;
+        border: 0;
+        background: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .hero {
+        background:
+          linear-gradient(90deg, #043c34f2, #043c34a6),
+          url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=85")
+            center/cover no-repeat;
+        color: white;
+        padding: 85px 0;
+      }
+      .hero-content {
+        max-width: 760px;
+      }
+      .eyebrow {
+        color: #d8a37e;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      h1 {
+        font-size: clamp(36px, 5vw, 59px);
+        line-height: 1.15;
+      }
+      .hero h1 span {
+        color: #69e4bd;
+      }
+      .hero p {
+        max-width: 650px;
+        color: #d9e6e0;
+        margin: 20px 0 25px;
+        font-size: 14px;
+      }
+      .hero .btn,
+      .cta .btn {
+        background: var(--mint);
+        color: var(--dark);
+      }
+      .breadcrumb {
+        font-size: 12px;
+        color: #d9e6e0;
+        margin-top: 22px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+      .heading {
+        text-align: center;
+        margin-bottom: 38px;
+      }
+      .heading h2,
+      h2 {
+        font-size: clamp(27px, 4vw, 39px);
+        line-height: 1.25;
+      }
+      .heading p,
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 12px;
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 42px;
+        align-items: center;
+      }
+      .photo {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .checks {
+        list-style: none;
+        margin: 18px 0;
+      }
+      .checks li {
+        margin: 10px 0;
+        font-size: 13px;
+      }
+      .checks li:before {
+        content: "✓";
+        color: #07866a;
+        font-weight: 800;
+        margin-right: 10px;
+      }
+
+      .cream {
+        background: var(--cream);
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .step {
+        background: white;
+        padding: 26px 22px;
+        border: 1px solid #e1e8e0;
+        border-radius: 5px;
+        position: relative;
+      }
+      .step-number {
+        width: 45px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--green);
+        color: white;
+        font-weight: 800;
+        font-size: 16px;
+      }
+      .step h3 {
+        font-size: 17px;
+        margin: 18px 0 10px;
+      }
+      .step p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .step .small-label {
+        color: #0a9674;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .card {
+        background: white;
+        padding: 26px;
+        border: 1px solid #e3e9e2;
+        border-radius: 5px;
+      }
+      .symbol {
+        font-size: 28px;
+        color: #0a9674;
+      }
+      .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .notice {
+        background: #e6f2e9;
+        border-left: 4px solid var(--mint);
+        padding: 20px;
+        margin-top: 28px;
+        font-size: 13px;
+        color: var(--text);
+      }
+      .faq {
+        max-width: 850px;
+        margin: auto;
+      }
+      details {
+        background: white;
+        border-bottom: 1px solid #e2e7e0;
+        padding: 18px;
+        margin-bottom: 8px;
+      }
+      summary {
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      details p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 12px;
+      }
+
+      .cta {
+        background: var(--green);
+        color: white;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+      }
+      .cta p {
+        color: #d4e3dc;
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 45px 0 18px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 25px;
+        padding-bottom: 28px;
+      }
+      footer h3 {
+        font-size: 14px;
+        margin-bottom: 13px;
+      }
+      footer p,
+      footer a {
+        display: block;
+        color: #c3d5cd;
+        font-size: 11px;
+        margin: 8px 0;
+      }
+      footer a:hover {
+        color: var(--mint);
+      }
+      .copyright {
+        border-top: 1px solid #ffffff25;
+        padding-top: 18px;
+        color: #c3d5cd;
+        font-size: 11px;
+      }
+
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 8px;
+        }
+        .nav-links a {
+          font-size: 10px;
+        }
+        .steps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .navbar {
+          min-height: 68px;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 15px 5%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .nav-links.show {
+          display: flex;
+        }
+        .nav-links a {
+          font-size: 13px;
+          padding: 9px 0;
+          border-bottom: 1px solid #eee;
+        }
+        .navbar > .btn {
+          display: none;
+        }
+        .hero {
+          padding: 58px 0;
+        }
+        section {
+          padding: 48px 0;
+        }
+        .intro-grid,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          height: 275px;
+        }
+        .cta {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 28px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 400px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container navbar">
+        <a class="logo" href="index.html">⌂ FinTrust</a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Calculator</a>
+          <a class="active" href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="btn" href="apply-now.html">Get Started →</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">A Clearer Borrowing Journey</div>
+        <h1>Finance Made<br /><span>Easier to Understand.</span></h1>
+        <p>
+          Learn the typical stages of exploring a loan, preparing your documents
+          and reviewing a lender's offer before making a financial commitment.
+        </p>
+        <a href="#steps" class="btn">Explore the Process ↓</a>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / How It Works
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container intro-grid">
+        <div>
+          <div class="eyebrow">Your Financial Journey</div>
+          <h2>Understand Every Step Before You Borrow</h2>
+          <p class="muted">
+            The loan process varies by lender and product. Understanding the
+            steps ahead of time can help you compare options and prepare the
+            information you may need.
+          </p>
+
+          <ul class="checks">
+            <li>Understand your funding requirements</li>
+            <li>Compare rates, fees and repayment terms</li>
+            <li>Prepare the relevant documents</li>
+            <li>Review the final offer before accepting</li>
+          </ul>
+
+          <a class="btn" href="loan-calculator.html"
+            >Calculate Estimated EMI →</a
+          >
+        </div>
+
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85"
+          alt="Financial planning and reviewing figures on a computer"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="cream" id="steps">
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Four Simple Stages</div>
+          <h2>How the Loan Process Works</h2>
+          <p>
+            A general guide to the usual stages. Exact steps depend on the
+            lender.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <div class="small-label" style="margin-top: 18px">STEP ONE</div>
+            <h3>Explore Your Options</h3>
+            <p>
+              Identify your financial needs and explore relevant loan categories
+              and potential lenders.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <div class="small-label" style="margin-top: 18px">STEP TWO</div>
+            <h3>Prepare Documents</h3>
+            <p>
+              Collect the identity, address, income and other documents
+              requested by your chosen lender.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <div class="small-label" style="margin-top: 18px">STEP THREE</div>
+            <h3>Lender Assessment</h3>
+            <p>
+              The lender may review eligibility, income, credit history and
+              repayment capacity.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">04</div>
+            <div class="small-label" style="margin-top: 18px">STEP FOUR</div>
+            <h3>Review the Offer</h3>
+            <p>
+              Check the interest rate, fees, tenure and repayment conditions
+              before deciding whether to accept.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Prepare in Advance</div>
+          <h2>What Information May You Need?</h2>
+          <p>Requirements vary according to the loan type and lender.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="symbol">♙</div>
+            <h3>Identity Information</h3>
+            <p>
+              Be prepared to provide the identity and address details required
+              for the lender's KYC process.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="symbol">▤</div>
+            <h3>Income Details</h3>
+            <p>
+              Depending on the product, salary slips, income tax returns or bank
+              statements may be requested.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="symbol">₹</div>
+            <h3>Repayment Planning</h3>
+            <p>
+              Review your regular expenses and existing repayments to understand
+              what you can comfortably afford.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>Important:</strong> FinTrust is presented here as a frontend
+          website demo. This page does not submit a real application, verify
+          eligibility or guarantee loan approval.
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container intro-grid">
+        <img
+          class="photo"
+          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=85"
+          alt="Documents being reviewed during a financial discussion"
+          loading="lazy"
+        />
+
+        <div>
+          <div class="eyebrow">Read Before You Sign</div>
+          <h2>Review the Loan Terms Carefully</h2>
+          <p class="muted">
+            Do not decide based on the EMI alone. Understand the complete cost
+            and conditions of borrowing.
+          </p>
+          <ul class="checks">
+            <li>Annual interest rate and how it is applied</li>
+            <li>Processing fees and other applicable charges</li>
+            <li>Repayment tenure and total amount payable</li>
+            <li>Late-payment and prepayment conditions</li>
+            <li>Consequences of missing repayments</li>
+          </ul>
+          <a href="loan-calculator.html" class="btn">Estimate Your EMI →</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="heading">
+          <div class="eyebrow">Frequently Asked Questions</div>
+          <h2>How It Works FAQs</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>How long does a loan application take?</summary>
+            <p>
+              Processing times vary by lender, loan type, document completeness
+              and verification requirements.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Does submitting an application guarantee approval?
+            </summary>
+            <p>
+              No. The lender makes the final decision after reviewing
+              eligibility and the relevant information.
+            </p>
+          </details>
+
+          <details>
+            <summary>Should I compare more than one lender?</summary>
+            <p>
+              Comparing applicable interest rates, fees, repayment terms and
+              conditions can help you make a more informed decision.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can I use this demo website to get a real loan?</summary>
+            <p>
+              No. This is a static frontend demonstration. Real applications
+              require a genuine lender's authorised application process.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="eyebrow">Take the Next Step</div>
+            <h2>Start with a Clear Financial Plan</h2>
+            <p>
+              Explore the available loan categories or estimate your monthly
+              repayment.
+            </p>
+          </div>
+          <a href="services.html" class="btn">Explore Services →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html" style="color: white"
+              >⌂ FinTrust</a
+            >
+            <p>
+              Finance information and loan planning for personal and business
+              goals.
+            </p>
+          </div>
+
+          <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="blog.html">Blog</a>
+          </div>
+
+          <div>
+            <h3>Loan Services</h3>
+            <a href="home-loans.html">Home Loans</a>
+            <a href="personal-loans.html">Personal Loans</a>
+            <a href="business-loans.html">Business Loans</a>
+            <a href="loan-calculator.html">EMI Calculator</a>
+          </div>
+
+          <div>
+            <h3>Contact & Legal</h3>
+            <a href="contact.html">Contact Us</a>
+            <a href="apply-now.html">Get Started</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © <span id="year"></span> FinTrust. Frontend demo only. No loan
+          approval is provided.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
+        menuBtn.textContent = navLinks.classList.contains("show") ? "✕" : "☰";
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("show");
+          menuBtn.textContent = "☰";
+        });
+      });
+    </script>
+  </body>
+</html>

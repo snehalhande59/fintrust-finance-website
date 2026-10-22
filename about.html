@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | FinTrust</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --green: #073f37;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #18332e;
+      }
+
+      body {
+        font-family: "DM Sans", Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      /* NAVBAR */
+      header {
+        background: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 12px #00000008;
+      }
+
+      .navbar {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .logo {
+        font-size: 25px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .nav-links a:hover {
+        color: var(--mint);
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--mint);
+        color: var(--green);
+      }
+
+      .menu-btn {
+        display: none;
+        border: none;
+        background: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      /* HERO */
+      .hero {
+        background:
+          linear-gradient(90deg, rgba(4, 48, 41, 0.96), rgba(4, 48, 41, 0.76)),
+          url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=85")
+            center/cover no-repeat;
+        color: white;
+        padding: 100px 0;
+      }
+
+      .eyebrow {
+        color: #d7a783;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 15px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 5vw, 62px);
+        line-height: 1.15;
+        max-width: 750px;
+      }
+
+      .hero p {
+        color: #d6e6df;
+        max-width: 650px;
+        margin: 22px 0;
+        font-size: 15px;
+      }
+
+      .breadcrumb {
+        margin-top: 25px;
+        font-size: 12px;
+        color: #c4ded4;
+      }
+
+      /* CONTENT */
+      .section {
+        padding: 80px 0;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 55px;
+        align-items: center;
+      }
+
+      .about-image {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+      }
+
+      h2 {
+        font-size: clamp(29px, 4vw, 42px);
+        line-height: 1.25;
+      }
+
+      .description {
+        color: #6c7b76;
+        font-size: 14px;
+        margin: 20px 0;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 35px;
+      }
+
+      .feature-card {
+        padding: 28px;
+        background: white;
+        border: 1px solid #e5ebe5;
+      }
+
+      .feature-card .icon {
+        font-size: 30px;
+      }
+
+      .feature-card h3 {
+        margin: 12px 0;
+        font-size: 18px;
+      }
+
+      .feature-card p {
+        color: #6c7b76;
+        font-size: 13px;
+      }
+
+      .cream {
+        background: var(--cream);
+      }
+
+      .cta {
+        background: var(--cream);
+        padding: 45px;
+        text-align: center;
+      }
+
+      .cta p {
+        margin: 15px 0 25px;
+        color: #6c7b76;
+      }
+
+      /* FOOTER */
+      footer {
+        background: #052e28;
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 30px;
+        padding-bottom: 35px;
+      }
+
+      footer h3 {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      footer p,
+      footer a {
+        display: block;
+        color: #c3d5cd;
+        font-size: 12px;
+        margin: 8px 0;
+      }
+
+      footer a:hover {
+        color: var(--mint);
+      }
+
+      .copyright {
+        border-top: 1px solid #ffffff25;
+        padding-top: 20px;
+        color: #c3d5cd;
+        font-size: 11px;
+      }
+
+      /* MOBILE RESPONSIVE */
+      @media (max-width: 900px) {
+        .nav-links {
+          gap: 10px;
+        }
+
+        .nav-links a {
+          font-size: 10px;
+        }
+
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .navbar {
+          min-height: 68px;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 15px 5%;
+          flex-direction: column;
+          align-items: stretch;
+          box-shadow: 0 10px 20px #00000012;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links a {
+          padding: 10px 0;
+          border-bottom: 1px solid #eee;
+          font-size: 13px;
+        }
+
+        .navbar > .btn {
+          display: none;
+        }
+
+        .hero {
+          padding: 65px 0;
+        }
+
+        .section {
+          padding: 50px 0;
+        }
+
+        .about-grid,
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          height: 280px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .cta {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <div class="container navbar">
+        <a href="index.html" class="logo">⌂ FinTrust</a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="apply-now.html" class="btn">Get Started →</a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">About FinTrust</div>
+
+        <h1>Driven by Trust,<br />Guided by Your Goals</h1>
+
+        <p>
+          Discover a simpler way to explore home loans, personal loans and
+          business financing. FinTrust brings useful information and planning
+          tools together in one place.
+        </p>
+
+        <a
+          href="services.html"
+          class="btn"
+          style="background: #19b88a; color: #073f37"
+        >
+          Explore Our Services →
+        </a>
+
+        <div class="breadcrumb"><a href="index.html">Home</a> / About Us</div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section">
+      <div class="container about-grid">
+        <div>
+          <div class="eyebrow">Our Story</div>
+
+          <h2>Making Financial Choices Easier</h2>
+
+          <p class="description">
+            At FinTrust, our goal is to make common loan concepts easier to
+            explore. We believe that clear information helps people ask better
+            questions and compare their options.
+          </p>
+
+          <h3>Our Vision</h3>
+          <p class="description">
+            To make financial information clear, accessible and easier to
+            understand.
+          </p>
+
+          <h3>Our Mission</h3>
+          <p class="description">
+            To offer a straightforward digital experience for exploring loan
+            categories, understanding repayments and preparing for discussions
+            with lenders.
+          </p>
+
+          <a href="how-it-works.html" class="btn"> Discover How It Works → </a>
+        </div>
+
+        <div>
+          <img
+            class="about-image"
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85"
+            alt="Financial planning and business meeting"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES SECTION -->
+    <section class="section cream">
+      <div class="container">
+        <div style="text-align: center">
+          <div class="eyebrow">Why FinTrust</div>
+          <h2>What Guides Us</h2>
+
+          <p class="description" style="max-width: 650px; margin: 20px auto">
+            A simple and helpful experience built around clarity, thoughtful
+            planning and informed financial decisions.
+          </p>
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <div class="icon">◎</div>
+            <h3>Transparency</h3>
+            <p>
+              Understand estimates, common requirements and the factors that may
+              affect loan terms.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon">◇</div>
+            <h3>Customer Focus</h3>
+            <p>
+              Explore information that helps you think about your needs, goals
+              and repayment capacity.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon">✓</div>
+            <h3>Simple Experience</h3>
+            <p>
+              Navigate loan information and basic planning tools through a
+              clean, responsive website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div class="eyebrow">Take The Next Step</div>
+
+          <h2>Your Financial Journey Starts Here</h2>
+
+          <p>
+            Explore available loan categories or estimate your monthly
+            repayments with our illustrative calculator.
+          </p>
+
+          <a href="services.html" class="btn">Explore Services</a>
+
+          <a
+            href="loan-calculator.html"
+            class="btn"
+            style="margin-left: 8px; background: #19b88a; color: #073f37"
+          >
+            Calculate EMI
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="logo" style="color: white"
+              >⌂ FinTrust</a
+            >
+
+            <p>
+              A finance and loan website concept designed to make exploring
+              common loan topics simple.
+            </p>
+          </div>
+
+          <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+          </div>
+
+          <div>
+            <h3>Loan Services</h3>
+            <a href="home-loans.html">Home Loans</a>
+            <a href="personal-loans.html">Personal Loans</a>
+            <a href="business-loans.html">Business Loans</a>
+            <a href="loan-calculator.html">EMI Calculator</a>
+          </div>
+
+          <div>
+            <h3>Contact</h3>
+            <a href="contact.html">Contact Us</a>
+            <a href="apply-now.html">Get Started</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © <span id="year"></span> FinTrust. Frontend demo website.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+
+        menuBtn.textContent = navLinks.classList.contains("active")
+          ? "✕"
+          : "☰";
+      });
+    </script>
+  </body>
+</html>

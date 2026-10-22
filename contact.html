@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | FinTrust</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #073f37;
+        --dark: #052e28;
+        --mint: #19b88a;
+        --cream: #f3f4e9;
+        --text: #193b35;
+        --muted: #71817b;
+        --white: #ffffff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "DM Sans", sans-serif;
+        color: var(--text);
+        background: #fff;
+        line-height: 1.65;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      input,
+      textarea,
+      select,
+      button {
+        font: inherit;
+      }
+
+      .topbar {
+        background: var(--dark);
+        color: #d6e9e2;
+        padding: 8px 5%;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        font-size: 12px;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.97);
+        border-bottom: 1px solid #e6ece7;
+        backdrop-filter: blur(12px);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--green);
+        white-space: nowrap;
+      }
+      .logo span {
+        color: #c47d50;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .nav-links a {
+        font-size: 12px;
+        font-weight: 700;
+        transition: 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--mint);
+      }
+      .menu-toggle {
+        display: none;
+        background: white;
+        border: 1px solid #dce5df;
+        padding: 7px 12px;
+        border-radius: 5px;
+        color: var(--green);
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: white;
+        padding: 75px 24px 80px;
+        background:
+          linear-gradient(105deg, rgba(5, 46, 40, 0.96), rgba(7, 63, 55, 0.78)),
+          url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=85")
+            center/cover;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border: 1px solid #ffffff35;
+        border-radius: 50%;
+        right: -90px;
+        top: -160px;
+        box-shadow:
+          0 0 0 35px #ffffff08,
+          0 0 0 75px #ffffff08;
+      }
+      .hero-inner {
+        max-width: 1150px;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+        animation: rise 0.7s ease both;
+      }
+      .eyebrow {
+        color: #d99c73;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-size: clamp(38px, 5vw, 58px);
+        line-height: 1.1;
+        letter-spacing: -1.8px;
+        margin: 14px 0;
+      }
+      .hero h1 span {
+        color: #9be6ce;
+      }
+      .hero p {
+        color: #d6e7e1;
+        font-size: 14px;
+        max-width: 620px;
+      }
+      .hero-points {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        margin-top: 24px;
+        font-size: 12px;
+        color: #e0eee8;
+      }
+      .hero-points span::before {
+        content: "✓";
+        color: #57e0b5;
+        font-weight: 800;
+        margin-right: 7px;
+      }
+
+      .container {
+        max-width: 1150px;
+        margin: auto;
+        padding: 65px 24px;
+      }
+      .intro {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto 35px;
+      }
+      .intro h2 {
+        font-size: clamp(27px, 3vw, 36px);
+        letter-spacing: -1px;
+        line-height: 1.2;
+        margin: 10px 0;
+      }
+      .intro p {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0;
+      }
+
+      .contact-layout {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 28px;
+        align-items: stretch;
+      }
+      .contact-info {
+        background: var(--green);
+        color: white;
+        padding: 35px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+      .contact-info::after {
+        content: "";
+        position: absolute;
+        right: -100px;
+        bottom: -110px;
+        width: 260px;
+        height: 260px;
+        border: 1px solid #ffffff25;
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 30px #ffffff08,
+          0 0 0 60px #ffffff08;
+      }
+      .contact-info h2 {
+        font-size: 27px;
+        line-height: 1.25;
+        margin: 10px 0;
+        position: relative;
+        z-index: 1;
+      }
+      .contact-info > p {
+        color: #c5ddd4;
+        font-size: 13px;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+      }
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin: 23px 0;
+        position: relative;
+        z-index: 1;
+      }
+      .info-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: #ffffff15;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+      .info-item h3 {
+        font-size: 13px;
+        margin: 0 0 4px;
+        color: white;
+      }
+      .info-item p {
+        color: #c5ddd4;
+        font-size: 12px;
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+      .info-item a:hover {
+        color: #70edc7;
+      }
+      .info-note {
+        border-top: 1px solid #ffffff2c;
+        padding-top: 20px;
+        margin-top: 30px;
+        font-size: 11px;
+        color: #c5ddd4;
+        position: relative;
+        z-index: 1;
+      }
+
+      .contact-form-wrap {
+        background: #f8f9f5;
+        border: 1px solid #e5ebe5;
+        padding: 35px;
+        border-radius: 4px;
+      }
+      .contact-form-wrap h2 {
+        font-size: 25px;
+        line-height: 1.25;
+        margin: 0 0 8px;
+      }
+      .form-description {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0 0 25px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .field {
+        margin-bottom: 17px;
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid #dce5df;
+        border-radius: 3px;
+        padding: 12px 13px;
+        outline: none;
+        background: white;
+        color: var(--text);
+        font-size: 13px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .field textarea {
+        min-height: 130px;
+        resize: vertical;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--mint);
+        box-shadow: 0 0 0 3px #19b88a18;
+      }
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: #9aa7a0;
+      }
+
+      .privacy-note {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 14px 0;
+      }
+      .submit-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px 18px;
+        background: var(--mint);
+        border: 0;
+        border-radius: 3px;
+        color: var(--dark);
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .submit-btn:hover {
+        background: #45d5ad;
+        transform: translateY(-2px);
+      }
+      .form-message {
+        display: none;
+        padding: 13px;
+        border-radius: 3px;
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      .form-message.show {
+        display: block;
+      }
+      .form-message.success {
+        background: #e0f6ec;
+        color: #075c43;
+      }
+      .form-message.error {
+        background: #fff0eb;
+        color: #9b3522;
+      }
+
+      .trust-strip {
+        background: var(--cream);
+        padding: 30px 24px;
+      }
+      .trust-inner {
+        max-width: 1100px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .trust-item {
+        display: flex;
+        gap: 13px;
+        align-items: flex-start;
+      }
+      .trust-icon {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        background: white;
+        border-radius: 50%;
+        color: #078365;
+        font-size: 19px;
+      }
+      .trust-item h3 {
+        font-size: 13px;
+        margin: 0 0 4px;
+      }
+      .trust-item p {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .faq-section {
+        background: white;
+      }
+      .faq-list {
+        max-width: 800px;
+        margin: 30px auto 0;
+      }
+      .faq-item {
+        border-bottom: 1px solid #e4eae5;
+      }
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+        padding: 20px 0;
+        background: none;
+        border: 0;
+        text-align: left;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .faq-question span:last-child {
+        font-size: 21px;
+        color: #078365;
+        flex-shrink: 0;
+      }
+      .faq-answer {
+        display: none;
+        color: var(--muted);
+        font-size: 13px;
+        padding: 0 30px 18px 0;
+      }
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+      .faq-item.open .faq-question {
+        color: #078365;
+      }
+
+      .cta {
+        background:
+          linear-gradient(90deg, rgba(5, 46, 40, 0.95), rgba(7, 63, 55, 0.78)),
+          url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1500&q=85")
+            center/cover;
+        padding: 55px 24px;
+        color: white;
+      }
+      .cta-inner {
+        max-width: 1050px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+      }
+      .cta h2 {
+        font-size: clamp(25px, 3vw, 34px);
+        line-height: 1.2;
+        margin: 8px 0;
+      }
+      .cta p {
+        color: #d0e3dc;
+        font-size: 13px;
+        margin: 0;
+      }
+      .cta a {
+        background: var(--mint);
+        color: var(--dark);
+        padding: 13px 18px;
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 800;
+        border-radius: 3px;
+        transition: 0.2s;
+      }
+      .cta a:hover {
+        background: #45d5ad;
+        transform: translateY(-2px);
+      }
+
+      .footer {
+        background: var(--dark);
+        color: #d8e8e1;
+        padding: 48px 24px 20px;
+      }
+      .footer-grid {
+        max-width: 1150px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 30px;
+      }
+      .footer h3 {
+        color: white;
+        margin-top: 0;
+      }
+      .footer h4 {
+        color: white;
+        font-size: 13px;
+      }
+      .footer p,
+      .footer a {
+        color: #a9c5bb;
+        font-size: 12px;
+      }
+      .footer a {
+        display: block;
+        margin: 9px 0;
+      }
+      .footer a:hover {
+        color: #54ddb3;
+      }
+      .copyright {
+        max-width: 1150px;
+        margin: 28px auto 0;
+        padding-top: 17px;
+        border-top: 1px solid #ffffff20;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: #9bb8ae;
+        font-size: 11px;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .nav-links {
+          gap: 12px;
+        }
+        .nav-links a {
+          font-size: 11px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 760px) {
+        .topbar {
+          padding: 8px 16px;
+        }
+        .nav-inner {
+          flex-wrap: wrap;
+          padding: 12px 18px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          order: 3;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 11px 4px;
+          border-top: 1px solid #e6ece7;
+          font-size: 13px;
+        }
+        .hero {
+          padding: 58px 20px;
+        }
+        .container {
+          padding: 45px 18px;
+        }
+        .contact-layout {
+          grid-template-columns: 1fr;
+        }
+        .contact-info,
+        .contact-form-wrap {
+          padding: 26px 22px;
+        }
+        .trust-inner {
+          grid-template-columns: 1fr;
+        }
+        .cta-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      @media (max-width: 500px) {
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          letter-spacing: -1px;
+        }
+        .contact-info h2 {
+          font-size: 24px;
+        }
+        .copyright {
+          flex-direction: column;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <span>Clear information. More confident financial decisions.</span>
+      <span>We're here to help you understand your options.</span>
+    </div>
+
+    <header class="navbar">
+      <div class="nav-inner">
+        <a class="logo" href="index.html">⌂ Fin<span>Trust</span></a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="blog.html">Blog</a>
+          <a class="active" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="eyebrow">We're here to help</div>
+          <h1>Let's talk about<br /><span>your financial goals.</span></h1>
+          <p>
+            Have questions about home loans, personal finance or business
+            funding? Send us a message and explore the information you need to
+            make a more informed decision.
+          </p>
+          <div class="hero-points">
+            <span>Clear information</span>
+            <span>Helpful guidance</span>
+            <span>No guaranteed-approval claims</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="intro">
+          <div class="eyebrow">Contact FinTrust</div>
+          <h2>How can we help you today?</h2>
+          <p>
+            Choose a topic and send your question. This demo form shows a
+            confirmation on this page but does not send or store your
+            information.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <aside class="contact-info">
+            <div class="eyebrow">Get in touch</div>
+            <h2>Questions are a good place to start.</h2>
+            <p>
+              Explore our website for educational information about financing
+              options, estimated EMIs and the documents lenders may request.
+            </p>
+
+            <div class="info-item">
+              <div class="info-icon">✉</div>
+              <div>
+                <h3>Email</h3>
+                <p>Use the contact form to send a demo enquiry.</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">◷</div>
+              <div>
+                <h3>Response information</h3>
+                <p>
+                  This is a frontend demo. No real support team or response
+                  service is connected.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">⌂</div>
+              <div>
+                <h3>Explore online</h3>
+                <p>
+                  <a href="services.html">Browse services</a> or
+                  <a href="loan-calculator.html">estimate your EMI</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-note">
+              <strong>Your safety matters.</strong><br />
+              Never share passwords, OTPs, full card details or banking PINs
+              through a website contact form.
+            </div>
+          </aside>
+
+          <section class="contact-form-wrap">
+            <h2>Send us a message</h2>
+            <p class="form-description">Fields marked * are required.</p>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="field">
+                  <label for="fullName">Full Name *</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    minlength="2"
+                    maxlength="80"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="email">Email Address *</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    maxlength="120"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="phone">Phone Number (Optional)</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Enter phone number"
+                    autocomplete="tel"
+                    maxlength="20"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="subject">What is your enquiry about? *</label>
+                  <select id="subject" name="subject" required>
+                    <option value="">Select a topic</option>
+                    <option value="Home Loans">Home Loans</option>
+                    <option value="Personal Loans">Personal Loans</option>
+                    <option value="Business Loans">Business Loans</option>
+                    <option value="EMI Calculator">EMI Calculator</option>
+                    <option value="General Question">General Question</option>
+                    <option value="Website Feedback">Website Feedback</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Your Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell us what information you are looking for..."
+                  minlength="10"
+                  maxlength="1500"
+                  required
+                ></textarea>
+              </div>
+
+              <p class="privacy-note">
+                Please do not include confidential financial information. In
+                this demo, your entries are processed only in your browser and
+                are not sent to a server.
+              </p>
+
+              <button class="submit-btn" type="submit">
+                Submit Enquiry <span aria-hidden="true">→</span>
+              </button>
+
+              <div
+                class="form-message"
+                id="formMessage"
+                role="status"
+                aria-live="polite"
+              ></div>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="trust-strip">
+        <div class="trust-inner">
+          <div class="trust-item">
+            <div class="trust-icon">✓</div>
+            <div>
+              <h3>Clear Information</h3>
+              <p>
+                Understand common loan terms and possible costs before making a
+                decision.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">⌕</div>
+            <div>
+              <h3>Compare Your Options</h3>
+              <p>
+                Review repayment estimates and ask lenders about rates, fees and
+                eligibility.
+              </p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">♧</div>
+            <div>
+              <h3>Make Informed Choices</h3>
+              <p>
+                Take time to read official loan documents and terms before
+                signing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container faq-section">
+        <div class="intro">
+          <div class="eyebrow">Quick answers</div>
+          <h2>Frequently asked questions</h2>
+          <p>
+            Some common questions about exploring loans and using this website.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I apply for a loan directly on this website?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              This website is a frontend demonstration. It does not submit
+              applications to a lender or approve loans. Contact a regulated
+              lender directly for a real application.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span
+                >Does the EMI calculator show the final amount I will pay?</span
+              >
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              No. A calculator provides an estimate based on the figures
+              entered. Actual repayment can differ because of lender terms,
+              fees, rate changes and other charges.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Does submitting this contact form send an email?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              No. The form currently demonstrates browser-side validation and a
+              confirmation message only. Sending emails requires a properly
+              configured backend or trusted form service.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What should I check before choosing a loan?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Compare the interest rate, total repayment, processing fees,
+              repayment schedule, late-payment charges, prepayment conditions
+              and the lender's official terms.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="cta-inner">
+          <div>
+            <div class="eyebrow">Plan your next step</div>
+            <h2>Start with the information you need.</h2>
+            <p>
+              Explore financing topics and estimate your monthly repayments.
+            </p>
+          </div>
+          <a href="loan-calculator.html">Explore EMI Calculator →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>⌂ Fin<span style="color: #c47d50">Trust</span></h3>
+          <p>
+            Clear, accessible information to help people explore common
+            financing options and understand estimated repayments.
+          </p>
+          <p>
+            This website is a frontend demo, not a lender or financial adviser.
+          </p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How It Works</a>
+        </div>
+
+        <div>
+          <h4>Loan Tools</h4>
+          <a href="home-loans.html">Home Loans</a>
+          <a href="personal-loans.html">Personal Loans</a>
+          <a href="business-loans.html">Business Loans</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+        </div>
+
+        <div>
+          <h4>More Information</h4>
+          <a href="blog.html">Financial Blog</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <span>© 2026 FinTrust Demo. All rights reserved.</span>
+        <span>Educational information only. Check official lender terms.</span>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "×" : "☰";
+      });
+
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const willOpen = !item.classList.contains("open");
+
+          document.querySelectorAll(".faq-item").forEach((other) => {
+            other.classList.remove("open");
+            other
+              .querySelector(".faq-question")
+              .setAttribute("aria-expanded", "false");
+            other.querySelector(".faq-question span:last-child").textContent =
+              "+";
+          });
+
+          if (willOpen) {
+            item.classList.add("open");
+            button.setAttribute("aria-expanded", "true");
+            button.querySelector("span:last-child").textContent = "−";
+          }
+        });
+      });
+
+      const contactForm = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+
+        formMessage.className = "form-message show success";
+        formMessage.textContent =
+          "Demo form validated successfully. No email was sent and no information was stored. Connect a backend or trusted form service to receive real enquiries.";
+
+        contactForm.reset();
+        formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    </script>
+  </body>
+</html>
